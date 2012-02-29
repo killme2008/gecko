@@ -1,0 +1,1042 @@
+17:23:50,888  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:50,951  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:23:50,966  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:50,966  WARN AbstractController:372 - The Controller started at null ...
+17:23:51,013  INFO AbstractController:515 - Controller has been stopped.
+17:23:53,026  INFO AbstractController:515 - Controller has been stopped.
+17:23:53,041  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:53,041  WARN AbstractController:372 - The Controller started at null ...
+17:23:54,055 ERROR AbstractController:203 - Connect error
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.nio.TCPConnectorController.onConnect(TCPConnectorController.java:196)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:23:54,055  INFO AbstractController:515 - Controller has been stopped.
+17:23:54,055  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:54,071  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:23:54,071  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:54,071  WARN AbstractController:372 - The Controller started at null ...
+17:23:54,071  INFO AbstractController:515 - Controller has been stopped.
+17:23:54,071 ERROR Reactor:527 - Reactor dispatch events error
+java.lang.NullPointerException
+	at com.taobao.gecko.core.nio.TCPController.onAccept(TCPController.java:154)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:472)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:23:54,071  INFO AbstractController:515 - Controller has been stopped.
+17:23:54,071  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:54,086  WARN AbstractController:372 - The Controller started at /127.0.0.1:57240 ...
+17:23:54,086  INFO AbstractController:515 - Controller has been stopped.
+17:23:57,128  INFO SelectorManager:57 - Creating 1 rectors...
+17:23:57,128  WARN AbstractController:372 - The Controller started at /127.0.0.1:57249 ...
+17:23:57,128  INFO AbstractController:515 - Controller has been stopped.
+17:23:59,203  INFO SelectorManager:57 - Creating 5 rectors...
+17:23:59,250  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:23:59,250  WARN AbstractController:210 - NO session to dispatch write event
+17:23:59,250  INFO AbstractController:515 - Controller has been stopped.
+17:24:00,264  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:00,264  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:24:00,264  INFO AbstractController:515 - Controller has been stopped.
+17:24:01,278  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:01,278  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:24:01,278  INFO AbstractController:515 - Controller has been stopped.
+17:24:02,292  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:02,292  WARN AbstractController:372 - The Controller started at /127.0.0.1:57269 ...
+17:24:02,292  INFO AbstractController:515 - Controller has been stopped.
+17:24:05,334  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:05,334  WARN AbstractController:372 - The Controller started at /127.0.0.1:57274 ...
+17:24:05,349  INFO AbstractController:515 - Controller has been stopped.
+17:24:07,408  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:07,408  WARN AbstractController:372 - The Controller started at /127.0.0.1:57637 ...
+17:24:07,408  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:07,408  WARN AbstractController:372 - The Controller started at /127.0.0.1:57638 ...
+17:24:08,438  INFO AbstractController:515 - Controller has been stopped.
+17:24:09,452  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:09,452  WARN AbstractController:372 - The Controller started at /127.0.0.1:57638 ...
+17:24:10,466  INFO AbstractController:515 - Controller has been stopped.
+17:24:10,466  INFO AbstractController:515 - Controller has been stopped.
+17:24:13,633  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:13,648  WARN AbstractController:372 - The Controller started at /0.0.0.0:1997 ...
+17:24:13,664  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:13,664  WARN AbstractController:372 - The Controller started at null ...
+17:24:16,706  INFO AbstractController:515 - Controller has been stopped.
+17:24:21,043  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:21,058 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:24,085  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:24,085 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:27,072  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:27,076 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:28,078  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:28,082 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:29,125  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:29,125 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:30,139  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:30,139 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runTest(MethodRoadie.java:77)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:42)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:31,153  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:31,153 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runWithTimeout(MethodRoadie.java:49)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:40)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:24:52,182  INFO SelectorManager:57 - Creating 1 rectors...
+17:24:52,182 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runWithTimeout(MethodRoadie.java:49)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:40)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:25:13,201  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:13,201 ERROR AbstractSession:92 - Get socket receive buffer size failed
+java.lang.ClassCastException: com.taobao.gecko.core.nio.impl.MockSelectableChannel cannot be cast to java.nio.channels.SocketChannel
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.<init>(NioTCPSession.java:89)
+	at com.taobao.gecko.core.nio.impl.NioTCPSessionUnitTest.setUp(NioTCPSessionUnitTest.java:129)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.MethodRoadie.runBefores(MethodRoadie.java:122)
+	at org.junit.internal.runners.MethodRoadie.runBeforesThenTestThenAfters(MethodRoadie.java:86)
+	at org.junit.internal.runners.MethodRoadie.runWithTimeout(MethodRoadie.java:49)
+	at org.junit.internal.runners.MethodRoadie.run(MethodRoadie.java:40)
+	at org.junit.internal.runners.JUnit4ClassRunner.invokeTestMethod(JUnit4ClassRunner.java:88)
+	at org.junit.internal.runners.JUnit4ClassRunner.runMethods(JUnit4ClassRunner.java:51)
+	at org.junit.internal.runners.JUnit4ClassRunner$1.run(JUnit4ClassRunner.java:44)
+	at org.junit.internal.runners.ClassRoadie.runUnprotected(ClassRoadie.java:27)
+	at org.junit.internal.runners.ClassRoadie.runProtected(ClassRoadie.java:37)
+	at org.junit.internal.runners.JUnit4ClassRunner.run(JUnit4ClassRunner.java:42)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:345)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:1009)
+17:25:15,229  INFO SelectorManager:57 - Creating 5 rectors...
+17:25:15,260  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:25:15,260  INFO AbstractController:515 - Controller has been stopped.
+17:25:16,274  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:16,290  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:25:16,290  INFO AbstractController:515 - Controller has been stopped.
+17:25:17,304  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:17,304  WARN AbstractController:372 - The Controller started at /0.0.0.0:8080 ...
+17:25:17,304  INFO AbstractController:515 - Controller has been stopped.
+17:25:18,333  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:18,364  WARN AbstractController:372 - The Controller started at /127.0.0.1:57357 ...
+17:25:18,364  INFO AbstractController:515 - Controller has been stopped.
+17:25:21,406  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:21,422  WARN AbstractController:372 - The Controller started at /127.0.0.1:57360 ...
+17:25:21,422  INFO AbstractController:515 - Controller has been stopped.
+17:25:23,465  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:23,481  WARN AbstractController:372 - The Controller started at /127.0.0.1:57363 ...
+17:25:24,667  INFO AbstractController:515 - Controller has been stopped.
+17:25:24,667  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:24,698  WARN AbstractController:372 - The Controller started at /127.0.0.1:57366 ...
+17:25:24,713  INFO AbstractController:515 - Controller has been stopped.
+17:25:24,713  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:24,713  WARN AbstractController:372 - The Controller started at /127.0.0.1:57369 ...
+17:25:26,757  INFO AbstractController:515 - Controller has been stopped.
+17:25:26,773  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:26,788  WARN AbstractController:372 - The Controller started at /127.0.0.1:57377 ...
+17:25:26,804  INFO AbstractController:515 - Controller has been stopped.
+17:25:26,804  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:26,819  WARN AbstractController:372 - The Controller started at /127.0.0.1:57380 ...
+17:25:29,861  INFO AbstractController:515 - Controller has been stopped.
+17:25:29,861  INFO SelectorManager:57 - Creating 1 rectors...
+17:25:29,877  WARN AbstractController:372 - The Controller started at /127.0.0.1:57385 ...
+17:25:30,891  INFO AbstractController:515 - Controller has been stopped.
+17:25:30,953  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:30,985  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,000  WARN AbstractController:372 - The Controller started at null ...
+17:25:31,016  INFO AbstractController:515 - Controller has been stopped.
+17:25:31,031  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:31,031  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,031  WARN AbstractController:372 - The Controller started at null ...
+17:25:31,031  INFO AbstractController:515 - Controller has been stopped.
+17:25:31,047  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:31,047  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,047  WARN AbstractController:372 - The Controller started at null ...
+17:25:31,047  INFO AbstractController:515 - Controller has been stopped.
+17:25:31,063  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:31,063  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,078  WARN AbstractController:372 - The Controller started at null ...
+17:25:31,078  INFO AbstractController:515 - Controller has been stopped.
+17:25:31,078  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:31,078  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,094  WARN AbstractController:372 - The Controller started at null ...
+17:25:31,109  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:31,109  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:31,125  WARN AbstractController:372 - The Controller started at /0.0.0.0:6859 ...
+17:25:33,106  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6859
+17:25:35,181  INFO GeckoHandler:330 - 远端连接0.0.0.0:6859关闭，启动重连任务
+17:25:35,181  INFO AbstractController:515 - Controller has been stopped.
+17:25:35,181  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6859
+17:25:35,196  INFO AbstractController:515 - Controller has been stopped.
+17:25:35,196  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:35,196 ERROR ReconnectManager:103 - 重新连接0.0.0.0:6859失败
+17:25:35,196  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:35,196  WARN AbstractController:372 - The Controller started at null ...
+17:25:37,224  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6860
+17:25:38,254 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:38,254  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6860
+17:25:39,424 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:39,424  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6860
+17:25:40,516 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:40,516  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6860
+17:25:41,218  INFO AbstractController:515 - Controller has been stopped.
+17:25:41,218  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:41,234  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:41,234  WARN AbstractController:372 - The Controller started at null ...
+17:25:41,249  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:41,249  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:41,280  WARN AbstractController:372 - The Controller started at /0.0.0.0:6861 ...
+17:25:43,261  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6861
+17:25:43,277  WARN GeckoHandler:427 - 连接数(0.0.0.0/0.0.0.0:6861)超过设定值5，连接将被关闭
+17:25:47,302  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,302  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,302  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,302  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,302  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,317  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,317  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,333  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,333  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,333  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,333  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,333  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,333  INFO AbstractController:515 - Controller has been stopped.
+17:25:47,349  INFO GeckoHandler:330 - 远端连接10.13.44.77:6861关闭，启动重连任务
+17:25:47,364  INFO ReconnectManager:113 - 尝试重新连接10.13.44.77:6861
+17:25:47,364 ERROR ReconnectManager:103 - 重新连接10.13.44.77:6861失败
+17:25:47,364 ERROR DefaultExceptionMonitor:58 - Gecko unexpected exception
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:25)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:233)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:206)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:236)
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.readFromBuffer(NioTCPSession.java:238)
+	at com.taobao.gecko.core.nio.impl.AbstractNioSession.onRead(AbstractNioSession.java:309)
+	at com.taobao.gecko.core.nio.impl.AbstractNioSession.onEvent(AbstractNioSession.java:508)
+	at com.taobao.gecko.core.nio.impl.SocketChannelController.dispatchReadEvent(SocketChannelController.java:80)
+	at com.taobao.gecko.core.nio.impl.NioController.onRead(NioController.java:201)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:490)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:47,380  INFO AbstractController:515 - Controller has been stopped.
+17:25:47,380  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:25:47,380  INFO SelectorManager:57 - Creating 4 rectors...
+17:25:47,395  WARN AbstractController:372 - The Controller started at null ...
+17:25:49,408  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6862
+17:25:50,437 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:50,437  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6862
+17:25:51,514 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:51,514  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6862
+17:25:52,621 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:52,621  INFO ReconnectManager:113 - 尝试重新连接0.0.0.0:6862
+17:25:53,635 ERROR AbstractController:107 - java.net.ConnectException: Connection refused: no further information
+java.net.ConnectException: Connection refused: no further information
+	at sun.nio.ch.SocketChannelImpl.checkConnect(Native Method)
+	at sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:574)
+	at com.taobao.gecko.core.extension.GeckoTCPConnectorController.onConnect(GeckoTCPConnectorController.java:99)
+	at com.taobao.gecko.core.nio.impl.Reactor.dispatchEvent(Reactor.java:500)
+	at com.taobao.gecko.core.nio.impl.Reactor.processSelectedKeys(Reactor.java:312)
+	at com.taobao.gecko.core.nio.impl.Reactor.run(Reactor.java:255)
+17:25:53,635  WARN ReconnectManager:163 - 无效的重连请求将被移除，分组信息为[DefaultRemotingContext_Notify_Default_Group_Name]
+17:25:57,383  INFO AbstractController:515 - Controller has been stopped.
+17:26:06,597  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:06,612  WARN AbstractController:372 - The Controller started at /127.0.0.1:57511 ...
+17:26:11,528  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,541  WARN AbstractController:372 - The Controller started at /127.0.0.1:57514 ...
+17:26:11,541  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,549  WARN AbstractController:372 - The Controller started at /127.0.0.1:57517 ...
+17:26:11,549  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,563  WARN AbstractController:372 - The Controller started at /127.0.0.1:57520 ...
+17:26:11,563  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,576  WARN AbstractController:372 - The Controller started at /127.0.0.1:57523 ...
+17:26:11,577  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,590  WARN AbstractController:372 - The Controller started at /127.0.0.1:57526 ...
+17:26:11,590  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,596  WARN AbstractController:372 - The Controller started at /127.0.0.1:57529 ...
+17:26:11,597  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,608  WARN AbstractController:372 - The Controller started at /127.0.0.1:57532 ...
+17:26:11,609  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,622  WARN AbstractController:372 - The Controller started at /127.0.0.1:57535 ...
+17:26:11,622  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,637  WARN AbstractController:372 - The Controller started at /127.0.0.1:57538 ...
+17:26:11,637  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,652  WARN AbstractController:372 - The Controller started at /127.0.0.1:57541 ...
+17:26:11,652  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,662  WARN AbstractController:372 - The Controller started at /127.0.0.1:57544 ...
+17:26:11,664  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,683  WARN AbstractController:372 - The Controller started at /127.0.0.1:57547 ...
+17:26:11,686  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,701  WARN AbstractController:372 - The Controller started at /127.0.0.1:57550 ...
+17:26:11,701  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,716  WARN AbstractController:372 - The Controller started at /127.0.0.1:57553 ...
+17:26:11,716  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,725  WARN AbstractController:372 - The Controller started at /127.0.0.1:57556 ...
+17:26:11,753  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,760  WARN AbstractController:372 - The Controller started at /127.0.0.1:57559 ...
+17:26:11,814  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,832  WARN AbstractController:372 - The Controller started at /0.0.0.0:1999 ...
+17:26:11,834  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:11,841  WARN AbstractController:372 - The Controller started at null ...
+17:26:17,858  INFO AbstractController:515 - Controller has been stopped.
+17:26:17,861  INFO AbstractController:515 - Controller has been stopped.
+17:26:17,874  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:17,927  WARN AbstractController:372 - The Controller started at /127.0.0.1:11931 ...
+17:26:17,929  INFO SelectorManager:57 - Creating 1 rectors...
+17:26:17,940  WARN AbstractController:372 - The Controller started at null ...
+17:26:21,803  INFO AbstractController:515 - Controller has been stopped.
+17:26:21,804  INFO AbstractController:515 - Controller has been stopped.
+17:26:21,809  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:24,835  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:26,359  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:27,910  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:29,424  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:29,424  INFO SelectorManager:57 - Creating 3 rectors...
+17:26:36,553  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:36,553  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:36,568  WARN AbstractController:372 - The Controller started at /0.0.0.0:8384 ...
+17:26:36,693  INFO AbstractController:515 - Controller has been stopped.
+17:26:36,693  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:36,693  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:36,724  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:36,740  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:36,787  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:36,802  WARN AbstractController:372 - The Controller started at null ...
+17:26:36,865  INFO AbstractController:515 - Controller has been stopped.
+17:26:36,989  INFO AbstractController:515 - Controller has been stopped.
+17:26:37,005  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:37,005  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:37,036  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:37,052  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:37,067  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:37,067  WARN AbstractController:372 - The Controller started at null ...
+17:26:38,159  INFO AbstractController:515 - Controller has been stopped.
+17:26:38,284  INFO AbstractController:515 - Controller has been stopped.
+17:26:38,284  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:38,284  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:38,315  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:38,315  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:38,347  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:38,362  WARN AbstractController:372 - The Controller started at null ...
+17:26:39,470  INFO AbstractController:515 - Controller has been stopped.
+17:26:39,485  INFO AbstractController:515 - Controller has been stopped.
+17:26:39,501  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:39,517  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:39,548  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:39,563  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:39,579  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:39,610  WARN AbstractController:372 - The Controller started at null ...
+17:26:40,967  INFO AbstractController:515 - Controller has been stopped.
+17:26:41,014  INFO AbstractController:515 - Controller has been stopped.
+17:26:41,030  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:41,030  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:41,077  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:41,077  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:41,077  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:41,092  WARN AbstractController:372 - The Controller started at null ...
+17:26:43,651  INFO AbstractController:515 - Controller has been stopped.
+17:26:43,697  INFO AbstractController:515 - Controller has been stopped.
+17:26:43,713  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:43,713  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:43,744  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:43,760  INFO AbstractController:515 - Controller has been stopped.
+17:26:43,775  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:43,775  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:43,791  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:43,806  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:43,806  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:43,806  WARN AbstractController:372 - The Controller started at null ...
+17:26:47,488  INFO AbstractController:515 - Controller has been stopped.
+17:26:47,535  INFO AbstractController:515 - Controller has been stopped.
+17:26:47,800  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:47,847  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:47,878  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:47,878  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:47,894  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:47,956  WARN AbstractController:372 - The Controller started at null ...
+17:26:51,294  INFO AbstractController:515 - Controller has been stopped.
+17:26:51,450  INFO AbstractController:515 - Controller has been stopped.
+17:26:51,497  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:51,497  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:51,606  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:51,669  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:51,669  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:51,700  WARN AbstractController:372 - The Controller started at null ...
+17:26:52,917  INFO AbstractController:515 - Controller has been stopped.
+17:26:53,151  INFO AbstractController:515 - Controller has been stopped.
+17:26:53,229  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:53,244  INFO SelectorManager:57 - Creating 4 rectors...
+17:26:53,307  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:26:53,322  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:26:53,322  INFO SelectorManager:57 - Creating 2 rectors...
+17:26:53,338  WARN AbstractController:372 - The Controller started at null ...
+17:27:01,431  INFO AbstractController:515 - Controller has been stopped.
+17:27:01,445  INFO AbstractController:515 - Controller has been stopped.
+17:27:01,451  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:01,455  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:01,480  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:01,490  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=2147483647, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:01,494  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:01,499  WARN AbstractController:372 - The Controller started at null ...
+17:27:07,098  INFO AbstractController:515 - Controller has been stopped.
+17:27:07,126  INFO AbstractController:515 - Controller has been stopped.
+17:27:07,143  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:07,144  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:07,165  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:07,175  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:07,180  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:07,191  WARN AbstractController:372 - The Controller started at null ...
+17:27:10,315  INFO AbstractController:515 - Controller has been stopped.
+17:27:10,361  INFO AbstractController:515 - Controller has been stopped.
+17:27:10,369  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:10,373  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:10,390  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:10,397  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:10,401  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:10,406  WARN AbstractController:372 - The Controller started at null ...
+17:27:10,423 ERROR GeckoHandler:222 - 未找到com.taobao.gecko.service.notify.request.NotifyDummyRequestCommand对应的处理器
+17:27:10,430  INFO AbstractController:515 - Controller has been stopped.
+17:27:10,494  INFO AbstractController:515 - Controller has been stopped.
+17:27:10,496  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:10,497  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:10,528  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:10,545  INFO AbstractController:515 - Controller has been stopped.
+17:27:10,556  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=2, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:10,557  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:10,575  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:10,575  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:10,592  WARN AbstractController:372 - The Controller started at null ...
+17:27:15,559  INFO InvalidConnectionScanTask:41 - 无效的连接/10.13.44.77:57870被关闭，超过4000毫秒没有任何IO操作
+17:27:21,593  INFO AbstractController:515 - Controller has been stopped.
+17:27:21,599  INFO AbstractController:515 - Controller has been stopped.
+17:27:21,605  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:21,606  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:21,626  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:21,626  INFO AbstractController:515 - Controller has been stopped.
+17:27:21,634  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=2, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:21,635  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:21,662  WARN AbstractController:372 - The Controller started at /0.0.0.0:9191 ...
+17:27:21,662  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:21,669  WARN AbstractController:372 - The Controller started at null ...
+17:27:26,705  INFO AbstractController:515 - Controller has been stopped.
+17:27:26,720  INFO AbstractController:515 - Controller has been stopped.
+17:27:26,752  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:26,767  WARN AbstractController:372 - The Controller started at /127.0.0.1:57893 ...
+17:27:26,767  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:26,767  WARN AbstractController:372 - The Controller started at /127.0.0.1:57896 ...
+17:27:26,767  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:26,783  WARN AbstractController:372 - The Controller started at /127.0.0.1:57899 ...
+17:27:33,199  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:34,711  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:36,217  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,722  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,726  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,737  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,740  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,750  INFO SelectorManager:57 - Creating 1 rectors...
+17:27:37,764  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:37,765  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:37,775  WARN AbstractController:372 - The Controller started at null ...
+17:27:37,790  INFO AbstractController:515 - Controller has been stopped.
+17:27:37,806  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:37,807  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:37,833  WARN AbstractController:372 - The Controller started at null ...
+17:27:37,843  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:37,844  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:37,871  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:27:41,922  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,923  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,924  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,924  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,924  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:27:41,924  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,925  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,925  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,926  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,926  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,926  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,927  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:41,944  INFO AbstractController:515 - Controller has been stopped.
+17:27:41,968  INFO AbstractController:515 - Controller has been stopped.
+17:27:41,978  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:41,987  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:41,992  WARN AbstractController:372 - The Controller started at null ...
+17:27:41,996  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:41,998  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:42,039  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:27:44,049  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:44,053  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:27:44,054  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:44,069  INFO AbstractController:515 - Controller has been stopped.
+17:27:44,082  INFO AbstractController:515 - Controller has been stopped.
+17:27:44,092  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:44,095  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:44,100  WARN AbstractController:372 - The Controller started at null ...
+17:27:44,103  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:44,109  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:44,140  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:27:49,205  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,207  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,208  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,208  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,209  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,209  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,210  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,213  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,213  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,214  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,218  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:27:49,220  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:49,237  INFO AbstractController:515 - Controller has been stopped.
+17:27:49,249  INFO AbstractController:515 - Controller has been stopped.
+17:27:49,264  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:49,270  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:49,305  WARN AbstractController:372 - The Controller started at null ...
+17:27:49,318  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:49,318  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:49,345  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:27:54,393  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,394  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,394  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,395  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,395  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,396  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,396  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,397  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,397  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,398  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,401  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:27:54,403  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:27:54,426  INFO AbstractController:515 - Controller has been stopped.
+17:27:54,451  INFO AbstractController:515 - Controller has been stopped.
+17:27:54,461  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:54,466  INFO SelectorManager:57 - Creating 2 rectors...
+17:27:54,472  WARN AbstractController:372 - The Controller started at null ...
+17:27:54,474  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:54,477  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:54,511  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:27:54,512  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:27:54,513  INFO SelectorManager:57 - Creating 4 rectors...
+17:27:54,545  WARN AbstractController:372 - The Controller started at /0.0.0.0:8091 ...
+17:28:02,602  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:02,602  INFO AbstractController:515 - Controller has been stopped.
+17:28:02,602  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:02,602  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,617  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8091
+17:28:02,633  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,633  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,633  INFO GeckoHandler:330 - 远端连接127.0.0.1:8091关闭，启动重连任务
+17:28:02,633  INFO AbstractController:515 - Controller has been stopped.
+17:28:02,648  INFO AbstractController:515 - Controller has been stopped.
+17:28:02,664  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:02,664  INFO SelectorManager:57 - Creating 2 rectors...
+17:28:02,664  WARN AbstractController:372 - The Controller started at null ...
+17:28:02,680  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:02,680  INFO SelectorManager:57 - Creating 4 rectors...
+17:28:02,695  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:28:02,695  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:04,676  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:06,860  INFO AbstractController:515 - Controller has been stopped.
+17:28:07,032  INFO AbstractController:515 - Controller has been stopped.
+17:28:07,079  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:07,079  INFO SelectorManager:57 - Creating 2 rectors...
+17:28:07,094  WARN AbstractController:372 - The Controller started at null ...
+17:28:07,094  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:07,094  INFO SelectorManager:57 - Creating 4 rectors...
+17:28:07,126  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:28:07,126 ERROR DefaultExceptionMonitor:58 - Gecko unexpected exception
+java.lang.RuntimeException
+	at com.taobao.gecko.service.impl.DefaultRemotingClientUnitTest$6.encodeContent(DefaultRemotingClientUnitTest.java:509)
+	at com.taobao.gecko.service.notify.RequestCommandEncoder.encode(RequestCommandEncoder.java:42)
+	at com.taobao.gecko.service.notify.NotifyWrapEncoder.encode(NotifyWrapEncoder.java:48)
+	at com.taobao.gecko.core.nio.impl.NioTCPSession.wrapMessage(NioTCPSession.java:223)
+	at com.taobao.gecko.core.core.impl.AbstractSession.asyncWrite(AbstractSession.java:473)
+	at com.taobao.gecko.service.impl.DefaultConnection.asyncWriteToSession(DefaultConnection.java:395)
+	at com.taobao.gecko.service.impl.DefaultConnection.invoke(DefaultConnection.java:268)
+	at com.taobao.gecko.service.impl.DefaultConnection.invoke(DefaultConnection.java:332)
+	at com.taobao.gecko.service.impl.BaseRemotingController.invokeToGroup(BaseRemotingController.java:447)
+	at com.taobao.gecko.service.impl.DefaultRemotingClientUnitTest.testSendErrorCommand(DefaultRemotingClientUnitTest.java:533)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.internal.runners.TestMethod.invoke(TestMethod.java:59)
+	at org.junit.internal.runners.MethodRoadie.runTestMethod(MethodRoadie.java:98)
+	at org.junit.internal.runners.MethodRoadie$1$1.call(MethodRoadie.java:55)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+17:28:07,126  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:07,141  INFO AbstractController:515 - Controller has been stopped.
+17:28:07,157  INFO AbstractController:515 - Controller has been stopped.
+17:28:07,188  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:07,188  INFO SelectorManager:57 - Creating 2 rectors...
+17:28:07,204  WARN AbstractController:372 - The Controller started at null ...
+17:28:07,204  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:07,219  INFO SelectorManager:57 - Creating 4 rectors...
+17:28:07,266  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:28:07,313  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:07,313  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:07,313  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:07,313  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:07,328  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:09,232  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:09,232  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:09,232  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:09,232  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:09,232  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:27,296  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,296  INFO ReconnectManager:113 - 尝试重新连接127.0.0.1:8090
+17:28:27,296  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,312  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,312  INFO AbstractController:515 - Controller has been stopped.
+17:28:27,327  INFO AbstractController:515 - Controller has been stopped.
+17:28:27,343  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=10, keepAlive=true, linger=0, maxCallBackCountPerConnection=100000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=6665011, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=0, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=2, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:27,343  INFO SelectorManager:57 - Creating 2 rectors...
+17:28:27,343  WARN AbstractController:372 - The Controller started at null ...
+17:28:27,343  INFO BaseRemotingController:113 - 即将启动RemotingController...
+配置为：
+BaseConfig [callBackExecutorPoolSize=1, callBackExecutorQueueSize=20000, dispatchMessageThreadCount=0, idleTime=-1, keepAlive=true, linger=0, maxCallBackCountPerConnection=1000000, maxCallBackExecutorPoolSize=30, maxReadBufferSize=0, maxScheduleWrittenBytes=22216, rcvBufferSize=65536, readBufferSize=131072, readThreadCount=5, reuseAddr=true, scanInvalidCallBackInterval=300, selectorPoolSize=4, sndBufferSize=65536, soLinger=true, tcpNoDelay=true, wireFormatType=NOTIFY_V1, writeThreadCount=0]
+17:28:27,358  INFO SelectorManager:57 - Creating 4 rectors...
+17:28:27,374  WARN AbstractController:372 - The Controller started at /0.0.0.0:8090 ...
+17:28:27,405  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,405  INFO GeckoHandler:330 - 远端连接127.0.0.1:8090关闭，启动重连任务
+17:28:27,405  INFO AbstractController:515 - Controller has been stopped.
+17:28:27,421  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,576  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,576  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,592  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,607  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,607  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,623  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.
+17:28:37,639  INFO AbstractController:515 - Controller has been stopped.

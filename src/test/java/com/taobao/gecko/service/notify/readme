@@ -1,0 +1,2 @@
+将notify的协议实现放到test，仅是为了做单元测试。因为gecko是从notify-remoting演化过来的，为了降低迁移代价，直接使用原来测试用的协议。
+以后无需跟notify的协议同步。
