@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
- <parent>
+  <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>7</version>
@@ -35,17 +35,17 @@
 	</plugins>
   </build>
 
-	<developers>
-		<developer>
-			<name>dennis zhuang</name>
-			<url>http://fnil.net/</url>
-			<timezone>8</timezone>
-		</developer>
-		<developer>
-			<name>wuhua</name>
-			<timezone>8</timezone>
-		</developer>
-	</developers>
+  <developers>
+	<developer>
+	  <name>dennis zhuang</name>
+	  <url>http://fnil.net/</url>
+	  <timezone>8</timezone>
+	</developer>
+	<developer>
+	  <name>wuhua</name>
+	  <timezone>8</timezone>
+	</developer>
+  </developers>
 
 
   <dependencies>
@@ -95,6 +95,15 @@
 	<plugins>
 	  <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-compiler-plugin</artifactId>
+		<configuration>
+		  <source>1.5</source>
+		  <target>1.5</target>
+		  <encoding>GBK</encoding>
+		</configuration>
+	  </plugin>
+	  <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-clover-plugin</artifactId>
 		<configuration>
 		  <licenseLocation>clover.license</licenseLocation>
@@ -105,9 +114,9 @@
 	  </plugin>
 	</plugins>
   </reporting>
-	<scm>
-		<connection>scm:git:git@github.com:killme2008/gecko.git</connection>
-		<developerConnection>scm:git:git@github.com:killme2008/gecko.git</developerConnection>
-		<url>git@github.com:killme2008/gecko.git</url>
-	</scm>
+  <scm>
+	<connection>scm:git:git@github.com:killme2008/gecko.git</connection>
+	<developerConnection>scm:git:git@github.com:killme2008/gecko.git</developerConnection>
+	<url>git@github.com:killme2008/gecko.git</url>
+  </scm>
 </project>
