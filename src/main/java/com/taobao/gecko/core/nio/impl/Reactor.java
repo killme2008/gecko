@@ -257,7 +257,7 @@ public final class Reactor extends Thread {
             catch (final ClosedSelectorException e) {
                 break;
             }
-            catch (final IOException e) {
+            catch (final Exception e) {
                 log.error("Reactor select error", e);
                 if (this.selector.isOpen()) {
                     continue;
