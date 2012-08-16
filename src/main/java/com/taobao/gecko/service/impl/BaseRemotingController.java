@@ -1,17 +1,15 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.taobao.gecko.service.impl;
 
@@ -113,9 +111,9 @@ public abstract class BaseRemotingController implements RemotingController {
         log.info(info.toString());
         if (this.remotingContext == null) {
             this.remotingContext =
-                    new DefaultRemotingContext(this.config, this.config.getWireFormatType().newCommandFactory());
-        }
-        else {
+                    new DefaultRemotingContext(this.config, this.config.getWireFormatType()
+                        .newCommandFactory());
+        } else {
             // 复用processor和listener
             this.remotingContext.dispose();
             final ConcurrentHashMap<Class<? extends RequestCommand>, RequestProcessor<? extends RequestCommand>> processorMap =
@@ -123,10 +121,11 @@ public abstract class BaseRemotingController implements RemotingController {
             final CopyOnWriteArrayList<ConnectionLifeCycleListener> connectionLifeCycleListenerList =
                     this.remotingContext.connectionLifeCycleListenerList;
             this.remotingContext =
-                    new DefaultRemotingContext(this.remotingContext.getConfig(), this.config.getWireFormatType()
-                        .newCommandFactory());
+                    new DefaultRemotingContext(this.remotingContext.getConfig(), this.config
+                        .getWireFormatType().newCommandFactory());
             this.remotingContext.processorMap.putAll(processorMap);
-            this.remotingContext.connectionLifeCycleListenerList.addAll(connectionLifeCycleListenerList);
+            this.remotingContext.connectionLifeCycleListenerList
+            .addAll(connectionLifeCycleListenerList);
         }
         final Configuration conf = this.getConfigurationFromConfig(this.config);
         this.controller = this.initController(conf);
@@ -136,10 +135,13 @@ public abstract class BaseRemotingController implements RemotingController {
         this.controller.setSocketOptions(this.getSocketOptionsFromConfig(this.config));
         this.controller.setSelectorPoolSize(this.config.getSelectorPoolSize());
         this.scanAllConnectionExecutor =
-                Executors
-                    .newSingleThreadScheduledExecutor(new WorkerThreadFactory("notify-remoting-ScanAllConnection"));
-        this.scanAllConnectionExecutor.scheduleAtFixedRate(new ScanAllConnectionRunner(this, this.getScanTasks()), 1,
-            this.config.getScanAllConnectionInterval(), TimeUnit.SECONDS);
+                Executors.newSingleThreadScheduledExecutor(new WorkerThreadFactory(
+                        "notify-remoting-ScanAllConnection"));
+        if (this.config.getScanAllConnectionInterval() > 0) {
+            this.scanAllConnectionExecutor.scheduleAtFixedRate(new ScanAllConnectionRunner(this,
+                this.getScanTasks()), 1, this.config.getScanAllConnectionInterval(),
+                TimeUnit.SECONDS);
+        }
         this.doStart();
         this.addShutdownHook();
     }
@@ -152,8 +154,7 @@ public abstract class BaseRemotingController implements RemotingController {
                 try {
                     BaseRemotingController.this.isHutdownHookCalled = true;
                     BaseRemotingController.this.stop();
-                }
-                catch (final NotifyRemotingException e) {
+                } catch (final NotifyRemotingException e) {
                     log.error("Shutdown remoting failed", e);
                 }
             }
@@ -168,7 +169,7 @@ public abstract class BaseRemotingController implements RemotingController {
      * @return
      */
     protected ScanTask[] getScanTasks() {
-        return new ScanTask[] { new InvalidCallBackScanTask() };
+        return new ScanTask[] {new InvalidCallBackScanTask()};
     }
 
 
@@ -194,8 +195,7 @@ public abstract class BaseRemotingController implements RemotingController {
         this.doStop();
         try {
             this.controller.stop();
-        }
-        catch (final IOException e) {
+        } catch (final IOException e) {
             throw new NotifyRemotingException("关闭连接错误", e);
         }
         this.remotingContext.dispose();
@@ -204,8 +204,7 @@ public abstract class BaseRemotingController implements RemotingController {
             if (!this.scanAllConnectionExecutor.awaitTermination(5000, TimeUnit.MILLISECONDS)) {
                 this.scanAllConnectionExecutor.shutdownNow();
             }
-        }
-        catch (final InterruptedException e) {
+        } catch (final InterruptedException e) {
             Thread.currentThread().interrupt();
         }
         this.attributes.clear();
@@ -248,12 +247,13 @@ public abstract class BaseRemotingController implements RemotingController {
             throw new IllegalArgumentException("Please set the wire format type");
         }
         this.remotingContext =
-                new DefaultRemotingContext(this.config, this.config.getWireFormatType().newCommandFactory());
+                new DefaultRemotingContext(this.config, this.config.getWireFormatType()
+                    .newCommandFactory());
     }
 
 
     public <T extends RequestCommand> void registerProcessor(final Class<T> commandClazz,
-            final RequestProcessor<T> processor) {
+                                                             final RequestProcessor<T> processor) {
         if (commandClazz == null) {
             throw new NullPointerException("Null command class");
         }
@@ -264,29 +264,33 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    public RequestProcessor<? extends RequestCommand> getProcessor(final Class<? extends RequestCommand> clazz) {
+    public RequestProcessor<? extends RequestCommand> getProcessor(
+        final Class<? extends RequestCommand> clazz) {
         return this.remotingContext.processorMap.get(clazz);
     }
 
 
-    public RequestProcessor<? extends RequestCommand> unreigsterProcessor(final Class<? extends RequestCommand> clazz) {
+    public RequestProcessor<? extends RequestCommand> unreigsterProcessor(
+        final Class<? extends RequestCommand> clazz) {
         return this.remotingContext.processorMap.remove(clazz);
     }
 
 
     public void addAllProcessors(
-            final Map<Class<? extends RequestCommand>, RequestProcessor<? extends RequestCommand>> map) {
+                                 final Map<Class<? extends RequestCommand>, RequestProcessor<? extends RequestCommand>> map) {
         this.remotingContext.processorMap.putAll(map);
     }
 
 
-    public void addConnectionLifeCycleListener(final ConnectionLifeCycleListener connectionLifeCycleListener) {
+    public void addConnectionLifeCycleListener(
+                                               final ConnectionLifeCycleListener connectionLifeCycleListener) {
         this.remotingContext.connectionLifeCycleListenerList.add(connectionLifeCycleListener);
 
     }
 
 
-    public void removeConnectionLifeCycleListener(final ConnectionLifeCycleListener connectionLifeCycleListener) {
+    public void removeConnectionLifeCycleListener(
+                                                  final ConnectionLifeCycleListener connectionLifeCycleListener) {
         this.remotingContext.connectionLifeCycleListenerList.remove(connectionLifeCycleListener);
     }
 
@@ -295,7 +299,8 @@ public abstract class BaseRemotingController implements RemotingController {
         if (command == null) {
             throw new NotifyRemotingException("Null command");
         }
-        final List<Connection> connnections = this.remotingContext.getConnectionsByGroup(Constants.DEFAULT_GROUP);
+        final List<Connection> connnections =
+                this.remotingContext.getConnectionsByGroup(Constants.DEFAULT_GROUP);
         if (connnections != null) {
             for (final Connection conn : connnections) {
                 if (conn.isConnected()) {
@@ -335,18 +340,19 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    public void sendToGroup(final String group, final RequestCommand command) throws NotifyRemotingException {
+    public void sendToGroup(final String group, final RequestCommand command)
+            throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
         if (command == null) {
             throw new NotifyRemotingException("Null command");
         }
-        final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, command);
+        final Connection conn =
+                this.selectConnectionForGroup(group, this.connectionSelector, command);
         if (conn != null) {
             conn.send(command);
-        }
-        else {
+        } else {
             throw new NotifyRemotingException("分组" + group + "没有可用的连接");
         }
     }
@@ -356,34 +362,33 @@ public abstract class BaseRemotingController implements RemotingController {
      * 根据策略从分组中的连接选择一个
      * 
      * @param group
-     * @param connectionSelector
-     *            连接选择器
+     * @param connectionSelector 连接选择器
      * @return
      */
-    public Connection selectConnectionForGroup(final String group, final ConnectionSelector connectionSelector,
-            final RequestCommand request) throws NotifyRemotingException {
+    public Connection selectConnectionForGroup(final String group,
+                                               final ConnectionSelector connectionSelector, final RequestCommand request)
+                                                       throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
         final List<Connection> connnections = this.remotingContext.getConnectionsByGroup(group);
         if (connnections != null) {
             return connectionSelector.select(group, request, connnections);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
 
     public void sendToGroup(final String group, final RequestCommand command,
-            final SingleRequestCallBackListener listener) throws NotifyRemotingException {
+                            final SingleRequestCallBackListener listener) throws NotifyRemotingException {
         this.sendToGroup(group, command, listener, this.opTimeout, TimeUnit.MILLISECONDS);
     }
 
 
     public void sendToGroup(final String group, final RequestCommand request,
-            final SingleRequestCallBackListener listener, final long time, final TimeUnit timeunut)
-            throws NotifyRemotingException {
+                            final SingleRequestCallBackListener listener, final long time, final TimeUnit timeunut)
+                                    throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
@@ -396,23 +401,25 @@ public abstract class BaseRemotingController implements RemotingController {
         if (timeunut == null) {
             throw new NotifyRemotingException("Null TimeUnit");
         }
-        final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, request);
+        final Connection conn =
+                this.selectConnectionForGroup(group, this.connectionSelector, request);
         if (conn != null) {
             conn.send(request, listener, time, timeunut);
-        }
-        else {
+        } else {
             if (listener != null) {
                 final ThreadPoolExecutor executor = listener.getExecutor();
                 if (executor != null) {
                     executor.execute(new Runnable() {
                         public void run() {
-                            listener.onResponse(BaseRemotingController.this.createNoConnectionResponseCommand(request
-                                .getRequestHeader()), null);
+                            listener.onResponse(BaseRemotingController.this
+                                .createNoConnectionResponseCommand(request.getRequestHeader()),
+                                null);
                         }
                     });
-                }
-                else {
-                    listener.onResponse(this.createNoConnectionResponseCommand(request.getRequestHeader()), null);
+                } else {
+                    listener.onResponse(
+                        this.createNoConnectionResponseCommand(request.getRequestHeader()),
+                        null);
                 }
             }
         }
@@ -425,7 +432,8 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    private BooleanAckCommand createCommErrorResponseCommand(final CommandHeader requestHeader, final String message) {
+    private BooleanAckCommand createCommErrorResponseCommand(final CommandHeader requestHeader,
+                                                             final String message) {
         final BooleanAckCommand responseCommand =
                 this.remotingContext.getCommandFactory().createBooleanAckCommand(requestHeader,
                     ResponseStatus.ERROR_COMM, message);
@@ -434,26 +442,27 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    public ResponseCommand invokeToGroup(final String group, final RequestCommand command) throws InterruptedException,
-            TimeoutException, NotifyRemotingException {
+    public ResponseCommand invokeToGroup(final String group, final RequestCommand command)
+            throws InterruptedException, TimeoutException, NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
         if (command == null) {
             throw new NotifyRemotingException("Null command");
         }
-        final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, command);
+        final Connection conn =
+                this.selectConnectionForGroup(group, this.connectionSelector, command);
         if (conn != null) {
             return conn.invoke(command);
-        }
-        else {
+        } else {
             return this.createNoConnectionResponseCommand(command.getRequestHeader());
         }
     }
 
 
-    public ResponseCommand invokeToGroup(final String group, final RequestCommand command, final long time,
-            final TimeUnit timeUnit) throws InterruptedException, TimeoutException, NotifyRemotingException {
+    public ResponseCommand invokeToGroup(final String group, final RequestCommand command,
+                                         final long time, final TimeUnit timeUnit) throws InterruptedException,
+                                         TimeoutException, NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
@@ -463,11 +472,11 @@ public abstract class BaseRemotingController implements RemotingController {
         if (timeUnit == null) {
             throw new NotifyRemotingException("Null TimeUnit");
         }
-        final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, command);
+        final Connection conn =
+                this.selectConnectionForGroup(group, this.connectionSelector, command);
         if (conn != null) {
             return conn.invoke(command, time, timeUnit);
-        }
-        else {
+        } else {
             return this.createNoConnectionResponseCommand(command.getRequestHeader());
         }
     }
@@ -493,8 +502,8 @@ public abstract class BaseRemotingController implements RemotingController {
 
 
     public void sendToGroupAllConnections(final String group, final RequestCommand command,
-            final GroupAllConnectionCallBackListener listener, final long timeout, final TimeUnit timeUnit)
-            throws NotifyRemotingException {
+                                          final GroupAllConnectionCallBackListener listener, final long timeout,
+                                          final TimeUnit timeUnit) throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
@@ -513,12 +522,12 @@ public abstract class BaseRemotingController implements RemotingController {
             final long timeoutInMillis = TimeUnit.MILLISECONDS.convert(timeout, timeUnit);
             // 创建callBack
             final GroupAllConnectionRequestCallBack requestCallBack =
-                    new GroupAllConnectionRequestCallBack(listener, countDownLatch, timeoutInMillis,
-                        System.currentTimeMillis(), resultMap);
+                    new GroupAllConnectionRequestCallBack(listener, countDownLatch,
+                        timeoutInMillis, System.currentTimeMillis(), resultMap);
             // 创建定时器引用
             final TimerRef timerRef =
-                    new TimerRef(timeoutInMillis, new GroupAllConnectionCallBackRunner(requestCallBack, resultMap,
-                        connections, command.getRequestHeader()));
+                    new TimerRef(timeoutInMillis, new GroupAllConnectionCallBackRunner(
+                        requestCallBack, resultMap, connections, command.getRequestHeader()));
             requestCallBack.setTimerRef(timerRef);
 
             for (final Connection conn : connections) {
@@ -527,23 +536,19 @@ public abstract class BaseRemotingController implements RemotingController {
                     try {
                         connection.addRequestCallBack(command.getOpaque(), requestCallBack);
                         requestCallBack.addWriteFuture(connection, connection.asyncSend(command));
+                    } catch (final Throwable t) {
+                        requestCallBack.onResponse(group, this.createCommErrorResponseCommand(
+                            command.getRequestHeader(), "发送失败，root:" + t.getMessage()),
+                            connection);
                     }
-                    catch (final Throwable t) {
-                        requestCallBack.onResponse(
-                            group,
-                            this.createCommErrorResponseCommand(command.getRequestHeader(),
-                                "发送失败，root:" + t.getMessage()), connection);
-                    }
-                }
-                else {
-                    requestCallBack.onResponse(group,
-                        this.createCommErrorResponseCommand(command.getRequestHeader(), "连接已经关闭"), connection);
+                } else {
+                    requestCallBack.onResponse(group, this.createCommErrorResponseCommand(
+                        command.getRequestHeader(), "连接已经关闭"), connection);
                 }
             }
             // 插入定时器
             this.insertTimer(timerRef);
-        }
-        else {
+        } else {
             if (listener != null) {
                 if (listener.getExecutor() != null) {
                     listener.getExecutor().execute(new Runnable() {
@@ -551,8 +556,7 @@ public abstract class BaseRemotingController implements RemotingController {
                             listener.onResponse(new HashMap<Connection, ResponseCommand>());
                         }
                     });
-                }
-                else {
+                } else {
                     // 否则，直接返回空结果集
                     listener.onResponse(new HashMap<Connection, ResponseCommand>());
                 }
@@ -563,8 +567,8 @@ public abstract class BaseRemotingController implements RemotingController {
 
 
     public Map<Connection, ResponseCommand> invokeToGroupAllConnections(final String group,
-            final RequestCommand command, final long time, final TimeUnit timeUnit) throws InterruptedException,
-            NotifyRemotingException {
+        final RequestCommand command, final long time, final TimeUnit timeUnit)
+                throws InterruptedException, NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
@@ -579,8 +583,8 @@ public abstract class BaseRemotingController implements RemotingController {
             final ConcurrentHashMap<Connection, ResponseCommand> resultMap =
                     new ConcurrentHashMap<Connection, ResponseCommand>();
             final GroupAllConnectionRequestCallBack requestCallBack =
-                    new GroupAllConnectionRequestCallBack(null, countDownLatch, TimeUnit.MILLISECONDS.convert(time,
-                        timeUnit), now, resultMap);
+                    new GroupAllConnectionRequestCallBack(null, countDownLatch,
+                        TimeUnit.MILLISECONDS.convert(time, timeUnit), now, resultMap);
 
             for (final Connection conn : connections) {
                 final DefaultConnection connection = (DefaultConnection) conn;
@@ -588,24 +592,24 @@ public abstract class BaseRemotingController implements RemotingController {
                     try {
                         connection.addRequestCallBack(command.getOpaque(), requestCallBack);
                         requestCallBack.addWriteFuture(connection, connection.asyncSend(command));
+                    } catch (final Throwable e) {
+                        requestCallBack.onResponse(
+                            group,
+                            this.createCommErrorResponseCommand(command.getRequestHeader(),
+                                e.getMessage()), connection);
                     }
-                    catch (final Throwable e) {
-                        requestCallBack
-                            .onResponse(group,
-                                this.createCommErrorResponseCommand(command.getRequestHeader(), e.getMessage()),
-                                connection);
-                    }
-                }
-                else {
-                    requestCallBack.onResponse(group,
-                        this.createCommErrorResponseCommand(command.getRequestHeader(), "连接已经关闭"), connection);
+                } else {
+                    requestCallBack.onResponse(group, this.createCommErrorResponseCommand(
+                        command.getRequestHeader(), "连接已经关闭"), connection);
                 }
             }
             if (!countDownLatch.await(time, timeUnit)) {
                 for (final Connection conn : connections) {
                     if (!resultMap.containsKey(conn)) {
-                        if (resultMap.putIfAbsent(conn,
-                            this.createTimeoutCommand(command.getRequestHeader(), conn.getRemoteSocketAddress())) == null) {
+                        if (resultMap.putIfAbsent(
+                            conn,
+                            this.createTimeoutCommand(command.getRequestHeader(),
+                                conn.getRemoteSocketAddress())) == null) {
                             requestCallBack.cancelWrite(conn);
                             // 切记移除回调
                             ((DefaultConnection) conn).removeRequestCallBack(command.getOpaque());
@@ -614,17 +618,17 @@ public abstract class BaseRemotingController implements RemotingController {
                 }
             }
             return resultMap;
-        }
-        else {
+        } else {
             return null;
         }
     }
 
 
-    private BooleanAckCommand createTimeoutCommand(final CommandHeader requestHeader, final InetSocketAddress address) {
+    private BooleanAckCommand createTimeoutCommand(final CommandHeader requestHeader,
+                                                   final InetSocketAddress address) {
         final BooleanAckCommand value =
-                this.remotingContext.getCommandFactory().createBooleanAckCommand(requestHeader, ResponseStatus.TIMEOUT,
-                    "等待响应超时");
+                this.remotingContext.getCommandFactory().createBooleanAckCommand(requestHeader,
+                    ResponseStatus.TIMEOUT, "等待响应超时");
         value.setResponseStatus(ResponseStatus.TIMEOUT);
         value.setResponseTime(System.currentTimeMillis());
         value.setResponseHost(address);
@@ -632,20 +636,23 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    public Map<Connection, ResponseCommand> invokeToGroupAllConnections(final String group, final RequestCommand command)
-            throws InterruptedException, NotifyRemotingException {
-        return this.invokeToGroupAllConnections(group, command, this.opTimeout, TimeUnit.MILLISECONDS);
+    public Map<Connection, ResponseCommand> invokeToGroupAllConnections(final String group,
+        final RequestCommand command) throws InterruptedException, NotifyRemotingException {
+        return this.invokeToGroupAllConnections(group, command, this.opTimeout,
+            TimeUnit.MILLISECONDS);
     }
 
 
     public void sendToGroupAllConnections(final String group, final RequestCommand command,
-            final GroupAllConnectionCallBackListener listener) throws NotifyRemotingException {
-        this.sendToGroupAllConnections(group, command, listener, this.opTimeout, TimeUnit.MILLISECONDS);
+                                          final GroupAllConnectionCallBackListener listener) throws NotifyRemotingException {
+        this.sendToGroupAllConnections(group, command, listener, this.opTimeout,
+            TimeUnit.MILLISECONDS);
     }
 
 
-    public void sendToGroups(final Map<String, RequestCommand> groupObjects, final MultiGroupCallBackListener listener,
-            final long timeout, final TimeUnit timeUnit, final Object... args) throws NotifyRemotingException {
+    public void sendToGroups(final Map<String, RequestCommand> groupObjects,
+                             final MultiGroupCallBackListener listener, final long timeout, final TimeUnit timeUnit,
+                             final Object... args) throws NotifyRemotingException {
         if (groupObjects == null || groupObjects.size() == 0) {
             throw new NotifyRemotingException("groupObject为空");
         }
@@ -662,7 +669,8 @@ public abstract class BaseRemotingController implements RemotingController {
         // 连接映射
         final Map<String/* group */, Connection> connectionMap = new HashMap<String, Connection>();
         // 请求映射
-        final Map<String/* group */, CommandHeader> headerMap = new HashMap<String, CommandHeader>();
+        final Map<String/* group */, CommandHeader> headerMap =
+                new HashMap<String, CommandHeader>();
         // 防止重复响应的响应标记
         final AtomicBoolean responsed = new AtomicBoolean(false);
 
@@ -673,19 +681,20 @@ public abstract class BaseRemotingController implements RemotingController {
         final long timeoutInMillis = TimeUnit.MILLISECONDS.convert(timeout, timeUnit);
         // 创建callBack
         final MultiGroupRequestCallBack groupRequestCallBack =
-                new MultiGroupRequestCallBack(listener, countDownLatch, timeoutInMillis, now, resultMap, responsed,
-                    args);
+                new MultiGroupRequestCallBack(listener, countDownLatch, timeoutInMillis, now,
+                    resultMap, responsed, args);
         // 创建定时器引用
         final TimerRef timerRef =
-                new TimerRef(timeoutInMillis, new GroupCallBackRunner(connectionMap, groupRequestCallBack, headerMap,
-                    resultMap, remoteAddr));
+                new TimerRef(timeoutInMillis, new GroupCallBackRunner(connectionMap,
+                    groupRequestCallBack, headerMap, resultMap, remoteAddr));
         groupRequestCallBack.setTimerRef(timerRef);
 
         for (final Map.Entry<String, RequestCommand> entry : groupObjects.entrySet()) {
             final RequestCommand requestCommand = entry.getValue();
             final String group = entry.getKey();
             final DefaultConnection conn =
-                    (DefaultConnection) this.selectConnectionForGroup(group, this.connectionSelector, requestCommand);
+                    (DefaultConnection) this.selectConnectionForGroup(group,
+                        this.connectionSelector, requestCommand);
 
             if (conn != null) {
                 try {
@@ -700,16 +709,15 @@ public abstract class BaseRemotingController implements RemotingController {
                     }
                     groupRequestCallBack.addWriteFuture(conn, conn.asyncSend(requestCommand));
                     headerMap.put(group, requestCommand.getRequestHeader());
+                } catch (final Throwable t) {
+                    groupRequestCallBack.onResponse(group, this.createCommErrorResponseCommand(
+                        requestCommand.getRequestHeader(), t.getMessage()), conn);
                 }
-                catch (final Throwable t) {
-                    groupRequestCallBack.onResponse(group,
-                        this.createCommErrorResponseCommand(requestCommand.getRequestHeader(), t.getMessage()), conn);
-                }
-            }
-            else {
+            } else {
                 // 直接返回错误应答
                 groupRequestCallBack.onResponse(group,
-                    this.createNoConnectionResponseCommand(requestCommand.getRequestHeader()), null);
+                    this.createNoConnectionResponseCommand(requestCommand.getRequestHeader()),
+                    null);
             }
         }
         // 插入定时器
@@ -730,9 +738,10 @@ public abstract class BaseRemotingController implements RemotingController {
         final CommandHeader requestHeader;
 
 
-        private GroupAllConnectionCallBackRunner(final GroupAllConnectionRequestCallBack requestCallBack,
-                final ConcurrentHashMap<Connection, ResponseCommand> resultMap, final List<Connection> connections,
-                final CommandHeader requestHeader) {
+        private GroupAllConnectionCallBackRunner(
+                                                 final GroupAllConnectionRequestCallBack requestCallBack,
+                                                 final ConcurrentHashMap<Connection, ResponseCommand> resultMap,
+                                                 final List<Connection> connections, final CommandHeader requestHeader) {
             this.requestCallBack = requestCallBack;
             this.resultMap = resultMap;
             this.connections = connections;
@@ -744,8 +753,7 @@ public abstract class BaseRemotingController implements RemotingController {
             for (final Connection conn : this.connections) {
                 if (!this.resultMap.containsKey(conn)) {
                     this.requestCallBack.cancelWrite(conn);
-                    this.requestCallBack.onResponse(
-                        null,
+                    this.requestCallBack.onResponse(null,
                         BaseRemotingController.this.createTimeoutCommand(this.requestHeader,
                             conn.getRemoteSocketAddress()), conn);
                 }
@@ -770,8 +778,9 @@ public abstract class BaseRemotingController implements RemotingController {
 
 
         public GroupCallBackRunner(final Map<String /* group */, Connection> connectionMap,
-                final MultiGroupRequestCallBack requestCallBack, final Map<String, CommandHeader> groupObjects,
-                final Map<String, ResponseCommand> resultMap, final InetSocketAddress remoteAddr) {
+                                   final MultiGroupRequestCallBack requestCallBack,
+                                   final Map<String, CommandHeader> groupObjects,
+                                   final Map<String, ResponseCommand> resultMap, final InetSocketAddress remoteAddr) {
             super();
             this.connectionMap = connectionMap;
             this.requestCallBack = requestCallBack;
@@ -791,18 +800,16 @@ public abstract class BaseRemotingController implements RemotingController {
                         this.requestCallBack.cancelWrite(connection);
                         // 修复投递超时时, 日志中记录的host为null的情况
                         /*
-                         * ResponseCommand value =
-                         * BaseRemotingController.this.createTimeoutCommand
+                         * ResponseCommand value = BaseRemotingController.this.createTimeoutCommand
                          * (entry.getValue(), this.remoteAddr);
                          */
                         final ResponseCommand value =
                                 BaseRemotingController.this.createTimeoutCommand(entry.getValue(),
                                     connection.getRemoteSocketAddress());
                         this.requestCallBack.onResponse(group, value, connection);
-                    }
-                    else {
-                        this.requestCallBack.onResponse(group,
-                            BaseRemotingController.this.createNoConnectionResponseCommand(entry.getValue()), null);
+                    } else {
+                        this.requestCallBack.onResponse(group, BaseRemotingController.this
+                            .createNoConnectionResponseCommand(entry.getValue()), null);
                     }
                 }
             }
@@ -811,14 +818,16 @@ public abstract class BaseRemotingController implements RemotingController {
     }
 
 
-    public void sendToGroups(final Map<String, RequestCommand> groupObjects) throws NotifyRemotingException {
+    public void sendToGroups(final Map<String, RequestCommand> groupObjects)
+            throws NotifyRemotingException {
         if (groupObjects == null || groupObjects.size() == 0) {
             throw new NotifyRemotingException("groupObjects为空");
         }
         for (final Map.Entry<String, RequestCommand> entry : groupObjects.entrySet()) {
             final RequestCommand requestCommand = entry.getValue();
             final String group = entry.getKey();
-            final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, requestCommand);
+            final Connection conn =
+                    this.selectConnectionForGroup(group, this.connectionSelector, requestCommand);
             if (conn != null) {
                 conn.send(requestCommand);
             }
@@ -828,17 +837,16 @@ public abstract class BaseRemotingController implements RemotingController {
 
 
     public void transferToGroup(final String group, final IoBuffer head, final IoBuffer tail,
-            final FileChannel channel, final long position, final long size, final Integer opaque,
-            final SingleRequestCallBackListener listener, final long time, final TimeUnit unit)
-            throws NotifyRemotingException {
+                                final FileChannel channel, final long position, final long size, final Integer opaque,
+                                final SingleRequestCallBackListener listener, final long time, final TimeUnit unit)
+                                        throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
         final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, null);
         if (conn != null) {
             conn.transferFrom(head, tail, channel, position, size, opaque, listener, time, unit);
-        }
-        else {
+        } else {
             throw new NotifyRemotingException("分组" + group + "没有可用的连接");
         }
 
@@ -846,15 +854,15 @@ public abstract class BaseRemotingController implements RemotingController {
 
 
     public void transferToGroup(final String group, final IoBuffer head, final IoBuffer tail,
-            final FileChannel channel, final long position, final long size) throws NotifyRemotingException {
+                                final FileChannel channel, final long position, final long size)
+                                        throws NotifyRemotingException {
         if (group == null) {
             throw new NotifyRemotingException("Null group");
         }
         final Connection conn = this.selectConnectionForGroup(group, this.connectionSelector, null);
         if (conn != null) {
             conn.transferFrom(head, tail, channel, position, size);
-        }
-        else {
+        } else {
             throw new NotifyRemotingException("分组" + group + "没有可用的连接");
         }
 
@@ -892,7 +900,8 @@ public abstract class BaseRemotingController implements RemotingController {
         ConcurrentHashMap<String, Object> subAttr = this.attributes.get(url);
         if (subAttr == null) {
             subAttr = new ConcurrentHashMap<String, Object>();
-            final ConcurrentHashMap<String, Object> oldSubAttr = this.attributes.putIfAbsent(url, subAttr);
+            final ConcurrentHashMap<String, Object> oldSubAttr =
+                    this.attributes.putIfAbsent(url, subAttr);
             if (oldSubAttr != null) {
                 subAttr = oldSubAttr;
             }
@@ -906,7 +915,8 @@ public abstract class BaseRemotingController implements RemotingController {
         ConcurrentHashMap<String, Object> subAttr = this.attributes.get(url);
         if (subAttr == null) {
             subAttr = new ConcurrentHashMap<String, Object>();
-            final ConcurrentHashMap<String, Object> oldSubAttr = this.attributes.putIfAbsent(url, subAttr);
+            final ConcurrentHashMap<String, Object> oldSubAttr =
+                    this.attributes.putIfAbsent(url, subAttr);
             if (oldSubAttr != null) {
                 subAttr = oldSubAttr;
             }

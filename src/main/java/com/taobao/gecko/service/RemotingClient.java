@@ -73,6 +73,30 @@ public interface RemotingClient extends RemotingController {
 
 
     /**
+     * 根据URL连接服务端，如果连接失败将转入重连模式，但是连接加入的分组将为target group。
+     * 
+     * @param url
+     *            服务端的URL，形如schema://host:port的字符串
+     * @param targetGroup
+     *            连接成功后加入的分组
+     * @param connCount
+     *            连接数
+     * @throws IOException
+     */
+    public void connect(String url, String targetGroup, int connCount) throws NotifyRemotingException;
+
+
+    /**
+     * 根据URL连接服务端，如果连接失败将转入重连模式，但是连接加入的分组将为target group,连接数默认为1
+     * 
+     * @param url
+     * @param targetGroup
+     * @throws NotifyRemotingException
+     */
+    public void connect(String url, String targetGroup) throws NotifyRemotingException;
+
+
+    /**
      * 获取远端地址
      * 
      * @param url

@@ -1,17 +1,15 @@
 /*
  * (C) 2007-2012 Alibaba Group Holding Limited.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
  */
 package com.taobao.gecko.service.impl;
 
@@ -67,6 +65,7 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public void close(final String group, final boolean allowReconnect) throws NotifyRemotingException {
         if (!this.started) {
             throw new NotifyRemotingException("The controller has been stopped");
@@ -92,37 +91,35 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
-    /**
-     * 这里需要同步，防止对同一个分组发起多个请求
-     */
-    public synchronized void connect(String group, final int connCount) throws NotifyRemotingException {
+    @Override
+    public void connect(String url, String targetGroup, int connCount) throws NotifyRemotingException {
         if (connCount <= 0) {
             throw new IllegalArgumentException("非法连接数，必须大于0");
         }
-        group = group.trim();
-        if (this.isGroupConnectPending(group)) {
+        url = url.trim();
+        if (this.isGroupConnectPending(targetGroup)) {
             return;
         }
 
-        final InetSocketAddress remoteAddress = this.getSocketAddrFromGroup(group);
+        final InetSocketAddress remoteAddress = this.getSocketAddrFromGroup(url);
 
         final Set<String> groupSet = new HashSet<String>();
-        groupSet.add(group);
-        this.reconnectManager.removeCanceledGroup(group);
+        groupSet.add(targetGroup);
+        this.reconnectManager.removeCanceledGroup(targetGroup);
         // 设置连接数属性
-        if (this.setAttributeIfAbsent(group, Constants.CONNECTION_COUNT_ATTR, connCount) != null) {
+        if (this.setAttributeIfAbsent(targetGroup, Constants.CONNECTION_COUNT_ATTR, connCount) != null) {
             return;
         }
         // 设置连接就绪锁
-        if (this.setAttributeIfAbsent(group, Constants.GROUP_CONNECTION_READY_LOCK, new Object()) != null) {
+        if (this.setAttributeIfAbsent(targetGroup, Constants.GROUP_CONNECTION_READY_LOCK, new Object()) != null) {
             return;
         }
         for (int i = 0; i < connCount; i++) {
             try {
                 final TimerRef timerRef = new TimerRef(((ClientConfig) this.config).getConnectTimeout(), null);
                 final Future<NioSession> future =
-                        ((GeckoTCPConnectorController) this.controller).connect(remoteAddress, groupSet,
-                            remoteAddress, timerRef);
+                        ((GeckoTCPConnectorController) this.controller).connect(remoteAddress, groupSet, remoteAddress,
+                            timerRef);
                 final CheckConnectFutureRunner runnable =
                         new CheckConnectFutureRunner(future, remoteAddress, groupSet, this);
                 timerRef.setRunnable(runnable);
@@ -133,6 +130,22 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
                 this.reconnectManager.addReconnectTask(new ReconnectTask(groupSet, remoteAddress));
             }
         }
+
+    }
+
+
+    @Override
+    public void connect(String url, String targetGroup) throws NotifyRemotingException {
+        this.connect(url, targetGroup, 1);
+    }
+
+
+    /**
+     * 这里需要同步，防止对同一个分组发起多个请求
+     */
+    @Override
+    public synchronized void connect(String group, final int connCount) throws NotifyRemotingException {
+        this.connect(group, group, connCount);
     }
 
 
@@ -179,6 +192,7 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
         }
 
 
+        @Override
         public void run() {
             try {
                 if (!this.future.isDone() && this.future.get(10, TimeUnit.MILLISECONDS) == null) {
@@ -212,12 +226,14 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public void connect(final String group) throws NotifyRemotingException {
         this.connect(group, 1);
 
     }
 
 
+    @Override
     public void awaitReadyInterrupt(final String group) throws NotifyRemotingException, InterruptedException {
         final Object readyLock = this.getAttribute(group, Constants.GROUP_CONNECTION_READY_LOCK);
         final Object attribute = this.getAttribute(group, Constants.CONNECTION_COUNT_ATTR);
@@ -229,8 +245,9 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public void awaitReadyInterrupt(final String group, final long time) throws NotifyRemotingException,
-            InterruptedException {
+    InterruptedException {
         if (StringUtils.isBlank(group)) {
             throw new IllegalArgumentException("Blank group");
         }
@@ -258,6 +275,7 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public InetSocketAddress getRemoteAddress(final String group) {
         if (this.remotingContext == null) {
             return null;
@@ -275,11 +293,13 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public String getRemoteAddressString(final String group) {
         return RemotingUtils.getAddrString(this.getRemoteAddress(group));
     }
 
 
+    @Override
     public boolean isConnected(final String group) {
         if (this.remotingContext == null) {
             return false;
@@ -297,6 +317,7 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     }
 
 
+    @Override
     public void setClientConfig(final ClientConfig clientConfig) {
         if (this.controller != null && this.controller.isStarted()) {
             throw new IllegalStateException("RemotingClient已经启动，设置无效");
@@ -358,6 +379,7 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
     /**
      * 当连接失败的时候回调
      */
+    @Override
     @SuppressWarnings("unchecked")
     public void onConnectFail(final Object... args) {
         if (args.length >= 2) {
