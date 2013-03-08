@@ -69,6 +69,7 @@ public class GroupManager implements GroupManagerMBean {
     }
 
 
+    @Override
     public Map<String, Set<String>> getGroupConnectionInfo() {
         final Map<String, Set<String>> result = new HashMap<String, Set<String>>();
         for (final Map.Entry<String, List<Connection>> entry : this.group2ConnectionMap.entrySet()) {
@@ -112,9 +113,6 @@ public class GroupManager implements GroupManagerMBean {
                 final boolean result = connections.remove(connection);
                 if (result) {
                     ((DefaultConnection) connection).removeGroup(group);
-                }
-                if (connections.size() == 0) {
-                    this.group2ConnectionMap.remove(group);
                 }
                 return result;
             }
