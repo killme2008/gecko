@@ -47,16 +47,16 @@ public class GroupManager implements GroupManagerMBean {
 
 
     public boolean addConnection(final String group, final Connection connection) {
-        List<Connection> connections = this.group2ConnectionMap.get(group);
-        if (connections == null) {
-            // 采用copyOnWrite主要是考虑遍历connection的操作会多一些，在发送消息的时候
-            connections = new CopyOnWriteArrayList<Connection>();
-            final List<Connection> oldList = this.group2ConnectionMap.putIfAbsent(group, connections);
-            if (oldList != null) {
-                connections = oldList;
+        synchronized (group.intern()) {
+            List<Connection> connections = this.group2ConnectionMap.get(group);
+            if (connections == null) {
+                // 采用copyOnWrite主要是考虑遍历connection的操作会多一些，在发送消息的时候
+                connections = new CopyOnWriteArrayList<Connection>();
+                final List<Connection> oldList = this.group2ConnectionMap.putIfAbsent(group, connections);
+                if (oldList != null) {
+                    connections = oldList;
+                }
             }
-        }
-        synchronized (connections) {
             // 已经包含，即认为添加成功
             if (connections.contains(connection)) {
                 return true;
@@ -91,12 +91,13 @@ public class GroupManager implements GroupManagerMBean {
 
 
     public int getGroupConnectionCount(final String group) {
-        final List<Connection> connections = this.group2ConnectionMap.get(group);
-        if (connections == null) {
-            return 0;
-        }
-        else {
-            synchronized (connections) {
+        synchronized (group.intern()) {
+            final List<Connection> connections = this.group2ConnectionMap.get(group);
+            if (connections == null) {
+                return 0;
+            }
+            else {
+
                 return connections.size();
             }
         }
@@ -104,15 +105,18 @@ public class GroupManager implements GroupManagerMBean {
 
 
     public boolean removeConnection(final String group, final Connection connection) {
-        final List<Connection> connections = this.group2ConnectionMap.get(group);
-        if (connections == null) {
-            return false;
-        }
-        else {
-            synchronized (connections) {
+        synchronized (group.intern()) {
+            final List<Connection> connections = this.group2ConnectionMap.get(group);
+            if (connections == null) {
+                return false;
+            }
+            else {
                 final boolean result = connections.remove(connection);
                 if (result) {
                     ((DefaultConnection) connection).removeGroup(group);
+                }
+                if (connections.isEmpty()) {
+                    this.group2ConnectionMap.remove(group);
                 }
                 return result;
             }
