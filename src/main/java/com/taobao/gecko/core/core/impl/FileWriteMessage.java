@@ -51,11 +51,13 @@ public class FileWriteMessage implements WriteMessage {
     }
 
 
+    @Override
     public Object getMessage() {
         return this;
     }
 
 
+    @Override
     public FutureImpl<Boolean> getWriteFuture() {
         return this.writeFuture;
     }
@@ -71,6 +73,7 @@ public class FileWriteMessage implements WriteMessage {
     }
 
 
+    @Override
     public boolean hasRemaining() {
         return this.hasHeadRemaining() || this.hasFileRemaining() || this.hasTailRemaining();
     }
@@ -81,43 +84,72 @@ public class FileWriteMessage implements WriteMessage {
     }
 
 
+    @Override
     public final void writing() {
         this.writing = true;
     }
 
 
+    @Override
     public final boolean isWriting() {
         return this.writing;
     }
 
 
+    @Override
     public long remaining() {
         return (this.head == null ? 0 : this.head.remaining()) + this.writeSize
                 + (this.tail == null ? 0 : this.tail.remaining());
     }
 
+    /**
+     * 如果写入返回为0，强制循环多次，提高发送效率
+     */
+    static final int WRITE_SPIN_COUNT = Integer.parseInt(System.getProperty("notify.remoting.write_spin_count", "16"));
 
+
+    @Override
     public long write(final WritableByteChannel channel) throws IOException {
         long transfered = 0;
         if (this.hasHeadRemaining()) {
-            transfered += channel.write(this.head.buf());
+            int n = 0;
+            for (int i = 0; i < WRITE_SPIN_COUNT; i++) {
+                n = channel.write(this.head.buf());
+                if (n > 0) {
+                    transfered += n;
+                    break;
+                }
+            }
             // 头没有完全写入，直接返回
             if (this.hasHeadRemaining()) {
                 return transfered;
             }
         }
         if (this.hasFileRemaining()) {
-            final long count = this.transferTo(channel);
-            this.writeSize -= count;
-            this.writeOffset += count;
-            transfered += count;
+            long n = 0;
+            for (int i = 0; i < WRITE_SPIN_COUNT; i++) {
+                n = this.transferTo(channel);
+                if (n > 0) {
+                    this.writeSize -= n;
+                    this.writeOffset += n;
+                    transfered += n;
+                    break;
+                }
+            }
             // 文件没有传输完毕，直接返回
             if (this.hasFileRemaining()) {
                 return transfered;
             }
         }
         if (this.hasTailRemaining()) {
-            transfered += channel.write(this.tail.buf());
+            int n = 0;
+            for (int i = 0; i < WRITE_SPIN_COUNT; i++) {
+                n = channel.write(this.tail.buf());
+                if (n > 0) {
+                    transfered += n;
+                    break;
+                }
+            }
         }
         return transfered;
     }
