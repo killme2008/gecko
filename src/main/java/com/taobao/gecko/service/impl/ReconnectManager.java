@@ -58,6 +58,7 @@ public class ReconnectManager {
     private static final Log log = LogFactory.getLog(ReconnectManager.class);
     private final ClientConfig clientConfig;
     private final DefaultRemotingClient remotingClient;
+    private int maxRetryTimes = -1;
     /**
      * 重连任务的执行线程
      */
@@ -67,6 +68,7 @@ public class ReconnectManager {
         private long lastConnectTime = -1; // 上次连接所花费的时间
 
 
+        @Override
         public void run() {
             while (ReconnectManager.this.started) {
                 long start = -1;
@@ -101,10 +103,23 @@ public class ReconnectManager {
                     }
                     if (task != null) {
                         log.error("重新连接" + RemotingUtils.getAddrString(task.getRemoteAddress()) + "失败", e.getCause());
-                        ReconnectManager.this.addReconnectTask(task);
+                        this.readdTask(task);
                     }
                 }
 
+            }
+        }
+
+
+        private void readdTask(ReconnectTask task) {
+            if (ReconnectManager.this.maxRetryTimes <= 0
+                    || task.increaseRetryCounterAndGet() < ReconnectManager.this.maxRetryTimes) {
+                ReconnectManager.this.addReconnectTask(task);
+            }
+            else {
+                log.warn("Retry too many times to reconnect to "
+                        + RemotingUtils.getAddrString(task.getRemoteAddress())
+                        + ",we will remove the task.");
             }
         }
 
@@ -125,9 +140,7 @@ public class ReconnectManager {
                 task.setDone(true);
             }
             catch (final Exception e) {
-                // 加入队尾
-                ReconnectManager.this.addReconnectTask(task);
-
+                this.readdTask(task);
             }
         }
     }
@@ -140,6 +153,7 @@ public class ReconnectManager {
         this.clientConfig = clientConfig;
         this.remotingClient = remotingClient;
         this.started = true;
+        this.maxRetryTimes = clientConfig.getMaxReconnectTimes();
         this.healConnectionThreads = new Thread[this.clientConfig.getHealConnectionExecutorPoolSize()];
 
     }

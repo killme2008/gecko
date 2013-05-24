@@ -37,6 +37,11 @@ public class ClientConfig extends BaseConfig {
     }
 
     /**
+     * Max retries to reconnect connections.If it is less or equal to zero,it
+     * means unlimit.Unlimit by default.
+     */
+    private int maxReconnectTimes = -1;
+    /**
      * 连接超时,单位毫秒
      */
     private long connectTimeout = 80000L;
@@ -58,6 +63,16 @@ public class ClientConfig extends BaseConfig {
 
     public void setConnectTimeout(final long connectTimeout) {
         this.connectTimeout = connectTimeout;
+    }
+
+
+    public int getMaxReconnectTimes() {
+        return this.maxReconnectTimes;
+    }
+
+
+    public void setMaxReconnectTimes(int maxReconnectTimes) {
+        this.maxReconnectTimes = maxReconnectTimes;
     }
 
 

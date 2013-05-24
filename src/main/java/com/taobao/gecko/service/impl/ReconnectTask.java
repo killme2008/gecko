@@ -17,11 +17,12 @@ package com.taobao.gecko.service.impl;
 
 import java.net.InetSocketAddress;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 /**
  * 
- *重连任务
+ * 重连任务
  * 
  * @author boyan
  * 
@@ -33,6 +34,12 @@ public final class ReconnectTask {
     private final InetSocketAddress remoteAddress;
     private volatile boolean done;
     private final Set<String> groupSet;
+    private final AtomicInteger counter = new AtomicInteger();
+
+
+    public long increaseRetryCounterAndGet() {
+        return this.counter.incrementAndGet();
+    }
 
 
     public ReconnectTask(Set<String> groupSet, InetSocketAddress remoteAddress) {

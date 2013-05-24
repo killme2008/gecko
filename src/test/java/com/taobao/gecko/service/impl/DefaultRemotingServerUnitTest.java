@@ -98,22 +98,20 @@ public class DefaultRemotingServerUnitTest {
     }
 
     private static final class JoinGroupListener implements ConnectionLifeCycleListener {
+        @Override
         public void onConnectionClosed(final Connection conn) {
 
         }
 
 
+        @Override
         public void onConnectionReady(final Connection conn) {
             // TODO Auto-generated method stub
 
         }
 
 
-        public ThreadPoolExecutor getExecutor() {
-            return null;
-        }
-
-
+        @Override
         public void onConnectionCreated(final Connection conn) {
             System.out.println("连接建立，并加入test分组");
             conn.getRemotingContext().addConnectionToGroup(GROUP, conn);
@@ -146,27 +144,30 @@ public class DefaultRemotingServerUnitTest {
             this.remotingServer.sendToGroup(GROUP, new NotifyDummyRequestCommand((String) null),
                 new SingleRequestCallBackListener() {
 
-                    public void onException(final Exception e) {
+                @Override
+                public void onException(final Exception e) {
 
+                }
+
+
+                @Override
+                public ThreadPoolExecutor getExecutor() {
+                    return null;
+                }
+
+
+                @Override
+                public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
+                    Assert.assertNotNull(responseCommand);
+                    Assert.assertEquals(OpCode.DUMMY, ((NotifyResponseCommand) responseCommand).getOpCode());
+                    Assert.assertEquals(ResponseStatus.NO_ERROR, responseCommand.getResponseStatus());
+                    invoked.set(true);
+                    synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
+                        DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
                     }
+                }
 
-
-                    public ThreadPoolExecutor getExecutor() {
-                        return null;
-                    }
-
-
-                    public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
-                        Assert.assertNotNull(responseCommand);
-                        Assert.assertEquals(OpCode.DUMMY, ((NotifyResponseCommand) responseCommand).getOpCode());
-                        Assert.assertEquals(ResponseStatus.NO_ERROR, responseCommand.getResponseStatus());
-                        invoked.set(true);
-                        synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
-                            DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
-                        }
-                    }
-
-                });
+            });
 
             synchronized (this.remotingServer) {
                 while (!invoked.get()) {
@@ -227,27 +228,30 @@ public class DefaultRemotingServerUnitTest {
             this.remotingServer.transferToGroup(GROUP, null, null, channel, 0, channel.size(), cmd.getOpaque(),
                 new SingleRequestCallBackListener() {
 
-                    public void onException(final Exception e) {
+                @Override
+                public void onException(final Exception e) {
 
+                }
+
+
+                @Override
+                public ThreadPoolExecutor getExecutor() {
+                    return null;
+                }
+
+
+                @Override
+                public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
+                    Assert.assertNotNull(responseCommand);
+                    Assert.assertEquals(OpCode.DUMMY, ((NotifyResponseCommand) responseCommand).getOpCode());
+                    Assert.assertEquals(ResponseStatus.NO_ERROR, responseCommand.getResponseStatus());
+                    invoked.set(true);
+                    synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
+                        DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
                     }
+                }
 
-
-                    public ThreadPoolExecutor getExecutor() {
-                        return null;
-                    }
-
-
-                    public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
-                        Assert.assertNotNull(responseCommand);
-                        Assert.assertEquals(OpCode.DUMMY, ((NotifyResponseCommand) responseCommand).getOpCode());
-                        Assert.assertEquals(ResponseStatus.NO_ERROR, responseCommand.getResponseStatus());
-                        invoked.set(true);
-                        synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
-                            DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
-                        }
-                    }
-
-                }, 10000, TimeUnit.MILLISECONDS);
+            }, 10000, TimeUnit.MILLISECONDS);
 
             synchronized (this.remotingServer) {
                 while (!invoked.get()) {
@@ -315,27 +319,30 @@ public class DefaultRemotingServerUnitTest {
             this.remotingServer.sendToGroup(GROUP, new NotifyDummyRequestCommand((String) null),
                 new SingleRequestCallBackListener() {
 
-                    public void onException(final Exception e) {
+                @Override
+                public void onException(final Exception e) {
 
+                }
+
+
+                @Override
+                public ThreadPoolExecutor getExecutor() {
+                    return null;
+                }
+
+
+                @Override
+                public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
+                    Assert.assertNotNull(responseCommand);
+                    // 确定是超时
+                    Assert.assertEquals(ResponseStatus.TIMEOUT, responseCommand.getResponseStatus());
+                    invoked.set(true);
+                    synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
+                        DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
                     }
+                }
 
-
-                    public ThreadPoolExecutor getExecutor() {
-                        return null;
-                    }
-
-
-                    public void onResponse(final ResponseCommand responseCommand, final Connection conn) {
-                        Assert.assertNotNull(responseCommand);
-                        // 确定是超时
-                        Assert.assertEquals(ResponseStatus.TIMEOUT, responseCommand.getResponseStatus());
-                        invoked.set(true);
-                        synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
-                            DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
-                        }
-                    }
-
-                });
+            });
 
             synchronized (this.remotingServer) {
                 while (!invoked.get()) {
@@ -464,23 +471,25 @@ public class DefaultRemotingServerUnitTest {
             this.remotingServer.sendToGroupAllConnections(GROUP, new NotifyDummyRequestCommand((String) null),
                 new GroupAllConnectionCallBackListener() {
 
-                    public ThreadPoolExecutor getExecutor() {
-                        return null;
+                @Override
+                public ThreadPoolExecutor getExecutor() {
+                    return null;
+                }
+
+
+                @Override
+                public void onResponse(final Map<Connection, ResponseCommand> resultMap) {
+                    Assert.assertEquals(5, resultMap.size());
+                    for (final Map.Entry<Connection, ResponseCommand> entry : resultMap.entrySet()) {
+                        Assert.assertEquals(ResponseStatus.NO_ERROR, entry.getValue().getResponseStatus());
                     }
-
-
-                    public void onResponse(final Map<Connection, ResponseCommand> resultMap) {
-                        Assert.assertEquals(5, resultMap.size());
-                        for (final Map.Entry<Connection, ResponseCommand> entry : resultMap.entrySet()) {
-                            Assert.assertEquals(ResponseStatus.NO_ERROR, entry.getValue().getResponseStatus());
-                        }
-                        synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
-                            invoked.set(true);
-                            DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
-                        }
+                    synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
+                        invoked.set(true);
+                        DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
                     }
+                }
 
-                });
+            });
 
             synchronized (this.remotingServer) {
                 while (!invoked.get()) {
@@ -518,24 +527,26 @@ public class DefaultRemotingServerUnitTest {
             this.remotingServer.sendToGroupAllConnections(GROUP, new NotifyDummyRequestCommand((String) null),
                 new GroupAllConnectionCallBackListener() {
 
-                    public ThreadPoolExecutor getExecutor() {
-                        return null;
+                @Override
+                public ThreadPoolExecutor getExecutor() {
+                    return null;
+                }
+
+
+                @Override
+                public void onResponse(final Map<Connection, ResponseCommand> resultMap) {
+                    Assert.assertEquals(5, resultMap.size());
+                    for (final Map.Entry<Connection, ResponseCommand> entry : resultMap.entrySet()) {
+                        Assert.assertEquals(ResponseStatus.TIMEOUT, entry.getValue().getResponseStatus());
+                        Assert.assertEquals("等待响应超时", ((NotifyBooleanAckCommand) entry.getValue()).getErrorMsg());
                     }
-
-
-                    public void onResponse(final Map<Connection, ResponseCommand> resultMap) {
-                        Assert.assertEquals(5, resultMap.size());
-                        for (final Map.Entry<Connection, ResponseCommand> entry : resultMap.entrySet()) {
-                            Assert.assertEquals(ResponseStatus.TIMEOUT, entry.getValue().getResponseStatus());
-                            Assert.assertEquals("等待响应超时", ((NotifyBooleanAckCommand) entry.getValue()).getErrorMsg());
-                        }
-                        synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
-                            invoked.set(true);
-                            DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
-                        }
+                    synchronized (DefaultRemotingServerUnitTest.this.remotingServer) {
+                        invoked.set(true);
+                        DefaultRemotingServerUnitTest.this.remotingServer.notifyAll();
                     }
+                }
 
-                });
+            });
 
             synchronized (this.remotingServer) {
                 while (!invoked.get()) {
@@ -558,18 +569,21 @@ public class DefaultRemotingServerUnitTest {
         int count = 0;
 
 
+        @Override
         public void onConnectionClosed(final Connection conn) {
             // TODO Auto-generated method stub
 
         }
 
 
+        @Override
         public void onConnectionReady(final Connection conn) {
             // TODO Auto-generated method stub
 
         }
 
 
+        @Override
         public void onConnectionCreated(final Connection conn) {
             this.count++;
             if (this.count % 2 == 0) {
@@ -609,11 +623,13 @@ public class DefaultRemotingServerUnitTest {
             final AtomicBoolean invoked = new AtomicBoolean(false);
             this.remotingServer.sendToGroups(this.createGroupObjects(), new MultiGroupCallBackListener() {
 
+                @Override
                 public ThreadPoolExecutor getExecutor() {
                     return null;
                 }
 
 
+                @Override
                 public void onResponse(final Map<String, ResponseCommand> groupResponses, final Object... args) {
                     Assert.assertEquals("hello", args[0]);
                     Assert.assertEquals(2, groupResponses.size());
@@ -666,11 +682,13 @@ public class DefaultRemotingServerUnitTest {
             final AtomicBoolean invoked = new AtomicBoolean(false);
             this.remotingServer.sendToGroups(this.createGroupObjects(), new MultiGroupCallBackListener() {
 
+                @Override
                 public ThreadPoolExecutor getExecutor() {
                     return null;
                 }
 
 
+                @Override
                 public void onResponse(final Map<String, ResponseCommand> groupResponses, final Object... args) {
                     Assert.assertEquals("hello", args[0]);
                     Assert.assertEquals(2, groupResponses.size());
@@ -737,11 +755,13 @@ public class DefaultRemotingServerUnitTest {
             final AtomicBoolean invoked = new AtomicBoolean(false);
             this.remotingServer.sendToGroups(this.createGroupObjects(), new MultiGroupCallBackListener() {
 
+                @Override
                 public ThreadPoolExecutor getExecutor() {
                     return null;
                 }
 
 
+                @Override
                 public void onResponse(final Map<String, ResponseCommand> groupResponses, final Object... args) {
                     Assert.assertEquals("hello", args[0]);
                     System.out.println(groupResponses);
@@ -825,6 +845,7 @@ public class DefaultRemotingServerUnitTest {
             remotingClient.connect(this.remotingServer.getConnectURI().toString(), 5);
             remotingClient.awaitReadyInterrupt(this.remotingServer.getConnectURI().toString());
 
+            Thread.sleep(1000);
             final ResponseCommand response =
                     this.remotingServer.invokeToGroup(GROUP, new NotifyDummyRequestCommand("test"), 5000,
                         TimeUnit.MILLISECONDS);
@@ -890,7 +911,7 @@ public class DefaultRemotingServerUnitTest {
         Thread.sleep(1000);
         final DefaultConnection conn =
                 (DefaultConnection) this.remotingServer.getRemotingContext()
-                    .getConnectionsByGroup(Constants.DEFAULT_GROUP).iterator().next();
+                .getConnectionsByGroup(Constants.DEFAULT_GROUP).iterator().next();
         Assert.assertNotNull(conn);
         // callback超时1秒
         conn.addRequestCallBack(0, new SingleRequestCallBack(null, 1000));
