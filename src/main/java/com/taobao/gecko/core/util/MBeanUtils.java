@@ -26,7 +26,13 @@ import java.lang.reflect.Method;
  * 
  */
 public class MBeanUtils {
+    public static final boolean ENABLE_JMX = Boolean.valueOf(System.getProperty("gecko.jmx.enable", "false"));
+
+
     public static void registerMBeanWithIdPrefix(final Object o, final String idPrefix) {
+        if (!ENABLE_JMX) {
+            return;
+        }
         boolean registered = false;
         // 优先注册到notify的MBeanServer上
         try {
