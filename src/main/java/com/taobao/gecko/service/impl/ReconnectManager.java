@@ -90,7 +90,7 @@ public class ReconnectManager {
                         this.doReconnectTask(task);
                     }
                     else {
-                        log.warn("无效的重连请求将被移除，分组信息为" + copySet);
+                        log.warn("Invalid reconnect request,the group set is:" + copySet);
                     }
                     this.lastConnectTime = System.currentTimeMillis() - start;
                 }
@@ -102,7 +102,8 @@ public class ReconnectManager {
                         this.lastConnectTime = System.currentTimeMillis() - start;
                     }
                     if (task != null) {
-                        log.error("重新连接" + RemotingUtils.getAddrString(task.getRemoteAddress()) + "失败", e.getCause());
+                        log.error("Reconnect to " + RemotingUtils.getAddrString(task.getRemoteAddress()) + "失败",
+                            e.getCause());
                         this.readdTask(task);
                     }
                 }
@@ -125,12 +126,12 @@ public class ReconnectManager {
 
 
         private void doReconnectTask(final ReconnectTask task) throws IOException, NotifyRemotingException {
-            log.info("尝试重新连接" + RemotingUtils.getAddrString(task.getRemoteAddress()));
+            log.info("Try to reconnect to " + RemotingUtils.getAddrString(task.getRemoteAddress()));
             final TimerRef timerRef = new TimerRef(ReconnectManager.this.clientConfig.getConnectTimeout(), null);
-            final Future<NioSession> future =
-                    ReconnectManager.this.connector.connect(task.getRemoteAddress(), task.getGroupSet(),
-                        task.getRemoteAddress(), timerRef);
             try {
+                final Future<NioSession> future =
+                        ReconnectManager.this.connector.connect(task.getRemoteAddress(), task.getGroupSet(),
+                            task.getRemoteAddress(), timerRef);
                 final DefaultRemotingClient.CheckConnectFutureRunner runnable =
                         new DefaultRemotingClient.CheckConnectFutureRunner(future, task.getRemoteAddress(),
                             task.getGroupSet(), ReconnectManager.this.remotingClient);
@@ -174,7 +175,7 @@ public class ReconnectManager {
 
     public void addReconnectTask(final ReconnectTask task) {
         if (!this.isValidTask(task)) {
-            log.warn("无效的重连请求将被移除，分组信息为" + task.getGroupSet());
+            log.warn("Invalid reconnect request,it is removed,the group set is:" + task.getGroupSet());
             return;
         }
         this.tasks.offer(task);
@@ -231,7 +232,7 @@ public class ReconnectManager {
         while (it.hasNext()) {
             final ReconnectTask task = it.next();
             if (task.getGroupSet().contains(group)) {
-                log.warn("无效的重连请求将被移除，分组信息为" + task.getGroupSet());
+                log.warn("Invalid reconnect request,it is removed,the group set is:" + task.getGroupSet());
                 it.remove();
             }
         }
