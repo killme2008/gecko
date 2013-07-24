@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeoutException;
 
 import com.taobao.gecko.core.util.MBeanUtils;
 import com.taobao.gecko.service.Connection;
@@ -104,6 +105,19 @@ public class GroupManager implements GroupManagerMBean {
     }
 
 
+    public void awaitGroupConnectionsEmpty(String group, long time) throws InterruptedException, TimeoutException {
+        long start = System.currentTimeMillis();
+        synchronized (group.intern()) {
+            while (this.group2ConnectionMap.get(group) != null) {
+                if (System.currentTimeMillis() - start > time) {
+                    throw new TimeoutException("Timeout to wait connections closed.");
+                }
+                group.intern().wait(time);
+            }
+        }
+    }
+
+
     public boolean removeConnection(final String group, final Connection connection) {
         synchronized (group.intern()) {
             final List<Connection> connections = this.group2ConnectionMap.get(group);
@@ -117,6 +131,7 @@ public class GroupManager implements GroupManagerMBean {
                 }
                 if (connections.isEmpty()) {
                     this.group2ConnectionMap.remove(group);
+                    group.intern().notifyAll();
                 }
                 return result;
             }

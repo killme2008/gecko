@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -88,6 +89,21 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
             }
         }
 
+    }
+
+
+    @Override
+    public void awaitClosed(String url, long time) throws InterruptedException, TimeoutException {
+        if (time <= 0) {
+            throw new IllegalArgumentException("Invalid timeout");
+        }
+        this.remotingContext.awaitGroupConnectionsEmpty(url, time);
+    }
+
+
+    @Override
+    public void awaitClosed(String url) throws InterruptedException, TimeoutException {
+        this.awaitClosed(url, 5000);
     }
 
 
@@ -196,13 +212,19 @@ public class DefaultRemotingClient extends BaseRemotingController implements Rem
         public void run() {
             try {
                 if (!this.future.isDone() && this.future.get(10, TimeUnit.MILLISECONDS) == null) {
-                    final ReconnectManager reconnectManager = this.remotingClient.getReconnectManager();
-                    reconnectManager.addReconnectTask(new ReconnectTask(this.groupSet, this.remoteAddress));
+                    this.addReconnectTask();
                 }
             }
             catch (final Exception e) {
                 log.error("Á¬½Ó" + this.remoteAddress + "Ê§°Ü", e);
+                this.addReconnectTask();
             }
+        }
+
+
+        private void addReconnectTask() {
+            final ReconnectManager reconnectManager = this.remotingClient.getReconnectManager();
+            reconnectManager.addReconnectTask(new ReconnectTask(this.groupSet, this.remoteAddress));
         }
 
     }

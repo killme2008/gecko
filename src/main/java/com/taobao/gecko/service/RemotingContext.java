@@ -17,6 +17,7 @@ package com.taobao.gecko.service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 
 import com.taobao.gecko.core.command.CommandFactory;
 import com.taobao.gecko.service.config.BaseConfig;
@@ -102,6 +103,9 @@ public interface RemotingContext {
 
 
     public abstract Object setAttributeIfAbsent(Object key);
+
+
+    public void awaitGroupConnectionsEmpty(String group, long time) throws InterruptedException, TimeoutException;
 
 
     /**

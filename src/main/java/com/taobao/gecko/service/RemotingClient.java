@@ -17,6 +17,7 @@ package com.taobao.gecko.service;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeoutException;
 
 import com.taobao.gecko.service.config.ClientConfig;
 import com.taobao.gecko.service.exception.NotifyRemotingException;
@@ -60,6 +61,25 @@ public interface RemotingClient extends RemotingController {
      * @throws InterruptedException
      */
     public void awaitReadyInterrupt(String url, long time) throws NotifyRemotingException, InterruptedException;
+
+
+    /**
+     * Await connections in a group to be closed.
+     * 
+     * @param url
+     * @param time
+     * @throws InterruptedException
+     */
+    public void awaitClosed(String url, long time) throws InterruptedException, TimeoutException;
+
+
+    /**
+     * Await connections in a group to be closed.
+     * 
+     * @param url
+     * @throws InterruptedException
+     */
+    public void awaitClosed(String url) throws InterruptedException, TimeoutException;
 
 
     /**

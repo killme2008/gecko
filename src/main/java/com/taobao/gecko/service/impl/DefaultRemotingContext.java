@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeoutException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -76,16 +77,19 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
     }
 
 
+    @Override
     public int getCallBackCountAvailablePermits() {
         return this.callBackSemaphore.availablePermits();
     }
 
 
+    @Override
     public CommandFactory getCommandFactory() {
         return this.commandFactory;
     }
 
 
+    @Override
     public BaseConfig getConfig() {
         return this.config;
     }
@@ -153,6 +157,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
     }
 
 
+    @Override
     public Set<String> getGroupSet() {
         return this.groupManager.getGroupSet();
     }
@@ -165,6 +170,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#addConnectionToGroup
      * (java.lang.String, com.taobao.gecko.service.Connection)
      */
+    @Override
     public boolean addConnectionToGroup(final String group, final Connection connection) {
         return this.groupManager.addConnection(group, connection);
     }
@@ -177,6 +183,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#addConnection
      * (com.taobao.gecko.service.Connection)
      */
+    @Override
     public void addConnection(final Connection connection) {
         this.groupManager.addConnection(Constants.DEFAULT_GROUP, connection);
     }
@@ -189,6 +196,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#removeConnection
      * (com.taobao.gecko.service.Connection)
      */
+    @Override
     public void removeConnection(final Connection connection) {
         this.groupManager.removeConnection(Constants.DEFAULT_GROUP, connection);
     }
@@ -200,8 +208,14 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * @seecom.taobao.notify.remoting.service.impl.RemotingContext#
      * getConnectionSetByGroup(java.lang.String)
      */
+    @Override
     public List<Connection> getConnectionsByGroup(final String group) {
         return this.groupManager.getConnectionsByGroup(group);
+    }
+
+
+    public void awaitGroupConnectionsEmpty(String group, long time) throws InterruptedException, TimeoutException {
+        this.groupManager.awaitGroupConnectionsEmpty(group, time);
     }
 
 
@@ -212,6 +226,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * removeConnectionFromGroup(java.lang.String,
      * com.taobao.gecko.service.Connection)
      */
+    @Override
     public boolean removeConnectionFromGroup(final String group, final Connection connection) {
         return this.groupManager.removeConnection(group, connection);
     }
@@ -224,6 +239,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#getAttribute(
      * java.lang.Object, java.lang.Object)
      */
+    @Override
     public Object getAttribute(final Object key, final Object defaultValue) {
         final Object value = this.attributes.get(key);
         return value == null ? defaultValue : value;
@@ -237,6 +253,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#getAttribute(
      * java.lang.Object)
      */
+    @Override
     public Object getAttribute(final Object key) {
         return this.attributes.get(key);
     }
@@ -249,6 +266,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#getAttributeKeys
      * ()
      */
+    @Override
     public Set<Object> getAttributeKeys() {
         return this.attributes.keySet();
     }
@@ -261,6 +279,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#setAttribute(
      * java.lang.Object, java.lang.Object)
      */
+    @Override
     public Object setAttribute(final Object key, final Object value) {
         return this.attributes.put(key, value);
     }
@@ -296,6 +315,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#setAttributeIfAbsent
      * (java.lang.Object, java.lang.Object)
      */
+    @Override
     public Object setAttributeIfAbsent(final Object key, final Object value) {
         return this.attributes.putIfAbsent(key, value);
     }
@@ -313,6 +333,7 @@ public class DefaultRemotingContext implements RemotingContext, DefaultRemotingC
      * com.taobao.gecko.service.impl.RemotingContext#setAttributeIfAbsent
      * (java.lang.Object)
      */
+    @Override
     public Object setAttributeIfAbsent(final Object key) {
         return this.attributes.putIfAbsent(key, null);
     }
