@@ -80,7 +80,7 @@ public class CachedBufferAllocator implements IoBufferAllocator {
     private static final int DEFAULT_MAX_POOL_SIZE = 8;
     private static final int DEFAULT_MAX_CACHED_BUFFER_SIZE = 1 << 18; // 256KB
 
-    private final int maxPoolSize;
+    private final int maxPoolSize;//等于0表示不限制CircularQueue的长度
     private final int maxCachedBufferSize;
 
     private final ThreadLocal<Map<Integer, Queue<CachedBuffer>>> heapBuffers;
@@ -151,21 +151,16 @@ public class CachedBufferAllocator implements IoBufferAllocator {
     }
 
 
-    private Map<Integer, Queue<CachedBuffer>> newPoolMap() {
+    public Map<Integer, Queue<CachedBuffer>> newPoolMap() {
         final Map<Integer, Queue<CachedBuffer>> poolMap = new HashMap<Integer, Queue<CachedBuffer>>();
         final int poolSize = this.maxPoolSize == 0 ? DEFAULT_MAX_POOL_SIZE : this.maxPoolSize;
-        int cachedQueueNum = IoBuffer.normalizeCapacity(this.getMaxCachedBufferSize());
-        if (this.getMaxCachedBufferSize() % 2 == 1) {
-            cachedQueueNum--;
-        }
-        for (int i = 0; i < cachedQueueNum; i++) {
-            poolMap.put(1 << i, new CircularQueue<CachedBuffer>(poolSize));
-        }
+        int maxCachedBufferSize = IoBuffer.normalizeCapacity(this.getMaxCachedBufferSize());
         poolMap.put(0, new CircularQueue<CachedBuffer>(poolSize));
-        poolMap.put(Integer.MAX_VALUE, new CircularQueue<CachedBuffer>(poolSize));
+        for (int cachedBufferSize = maxCachedBufferSize; cachedBufferSize > 0; cachedBufferSize = cachedBufferSize >> 1) {
+            poolMap.put(cachedBufferSize, new CircularQueue<CachedBuffer>(poolSize));
+        }
         return poolMap;
     }
-
 
     public IoBuffer allocate(final int requestedCapacity, final boolean direct) {
         final int actualCapacity = IoBuffer.normalizeCapacity(requestedCapacity);
