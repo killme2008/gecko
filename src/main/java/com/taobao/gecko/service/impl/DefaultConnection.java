@@ -15,6 +15,21 @@
  */
 package com.taobao.gecko.service.impl;
 
+import com.taobao.gecko.core.buffer.IoBuffer;
+import com.taobao.gecko.core.command.*;
+import com.taobao.gecko.core.command.kernel.BooleanAckCommand;
+import com.taobao.gecko.core.nio.NioSession;
+import com.taobao.gecko.core.nio.impl.TimerRef;
+import com.taobao.gecko.core.util.ConcurrentHashSet;
+import com.taobao.gecko.core.util.RemotingUtils;
+import com.taobao.gecko.service.Connection;
+import com.taobao.gecko.service.RemotingContext;
+import com.taobao.gecko.service.SingleRequestCallBackListener;
+import com.taobao.gecko.service.callback.SingleRequestCallBack;
+import com.taobao.gecko.service.exception.NotifyRemotingException;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteOrder;
@@ -26,26 +41,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.taobao.gecko.core.buffer.IoBuffer;
-import com.taobao.gecko.core.command.CommandHeader;
-import com.taobao.gecko.core.command.Constants;
-import com.taobao.gecko.core.command.RequestCommand;
-import com.taobao.gecko.core.command.ResponseCommand;
-import com.taobao.gecko.core.command.ResponseStatus;
-import com.taobao.gecko.core.command.kernel.BooleanAckCommand;
-import com.taobao.gecko.core.nio.NioSession;
-import com.taobao.gecko.core.nio.impl.TimerRef;
-import com.taobao.gecko.core.util.ConcurrentHashSet;
-import com.taobao.gecko.core.util.RemotingUtils;
-import com.taobao.gecko.service.Connection;
-import com.taobao.gecko.service.RemotingContext;
-import com.taobao.gecko.service.SingleRequestCallBackListener;
-import com.taobao.gecko.service.callback.SingleRequestCallBack;
-import com.taobao.gecko.service.exception.NotifyRemotingException;
 
 
 /**
@@ -249,7 +244,7 @@ public class DefaultConnection implements Connection {
     private void checkFlow() throws NotifyRemotingException {
         if (this.session.getScheduleWritenBytes() > this.remotingContext.getConfig().getMaxScheduleWrittenBytes()) {
             throw new NotifyRemotingException("发送消息失败，超过流量限制["
-                    + this.remotingContext.getConfig().getMaxScheduleWrittenBytes() + "字节]");
+                    + this.remotingContext.getConfig().getMaxScheduleWrittenBytes() + "字节],remoteAddr:"+RemotingUtils.getAddrString(session.getRemoteSocketAddress()));
         }
     }
 
