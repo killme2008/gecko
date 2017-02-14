@@ -64,7 +64,9 @@ public class SelectorManager {
         this.dividend = this.reactorSet.length - 1;
     }
 
-    private volatile boolean started;
+    //SelectorManager status: new -> started -> stopped
+    private volatile boolean started = false;
+	private volatile boolean stopped = false;
 
 
     public int getSelectorCount() {
@@ -76,7 +78,8 @@ public class SelectorManager {
         if (this.started) {
             return;
         }
-        this.started = true;
+		this.started = true;
+		this.stopped = false;
         for (final Reactor reactor : this.reactorSet) {
             reactor.start();
         }
@@ -102,6 +105,7 @@ public class SelectorManager {
             return;
         }
         this.started = false;
+        this.stopped = true;
         for (final Reactor reactor : this.reactorSet) {
             reactor.interrupt();
         }
@@ -149,6 +153,10 @@ public class SelectorManager {
                 catch (final InterruptedException e) {
                     Thread.currentThread().interrupt();// reset interrupt status
                 }
+                
+				if (this.stopped) {
+					throw new IllegalStateException("SelectorManager was stopped");
+				}
             }
         }
     }
