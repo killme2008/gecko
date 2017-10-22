@@ -527,9 +527,6 @@ public abstract class AbstractNioSession extends AbstractSession implements NioS
 
 
     public void insertTimer(final TimerRef timerRef) {
-        if (this.isClosed()) {
-            return;
-        }
         this.selectorManager.insertTimer(timerRef);
     }
 
