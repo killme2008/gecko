@@ -161,6 +161,8 @@ public final class Reactor extends Thread {
     private long nextTimeout = 0;
 
     private long lastMoveTimestamp = 0; // 上次从timerQueue搬迁到timerHeap的时间戳
+    
+    private volatile long lastCheckSessionTimeoutTs;
 
 
     Reactor(final SelectorManager selectorManager, final Configuration configuration, final int index)
@@ -564,7 +566,7 @@ public final class Reactor extends Thread {
         if (this.configuration.getCheckSessionTimeoutInterval() > 0) {
             this.gate.lock();
             try {
-                if (this.selectTries * 1000 >= this.configuration.getCheckSessionTimeoutInterval()) {
+                if (isNeedCheckSessionTimeout()) {
                     nextTimeout = this.configuration.getCheckSessionTimeoutInterval();
                     for (final SelectionKey key : this.selector.keys()) {
                         // 检测是否expired或者idle
@@ -574,6 +576,7 @@ public final class Reactor extends Thread {
                         }
                     }
                     this.selectTries = 0;
+                    this.lastCheckSessionTimeoutTs = this.getTime();
                 }
             }
             finally {
@@ -582,6 +585,12 @@ public final class Reactor extends Thread {
         }
         return nextTimeout;
     }
+
+
+	private boolean isNeedCheckSessionTimeout() {
+		return this.selectTries * 1000 >= this.configuration.getCheckSessionTimeoutInterval()
+				|| this.getTime() - lastCheckSessionTimeoutTs >= this.configuration.getCheckSessionTimeoutInterval();
+	}
 
 
     private final Session getSessionFromAttchment(final SelectionKey key) {
@@ -661,18 +670,21 @@ public final class Reactor extends Thread {
     }
 
 
-    final void postSelect(final Set<SelectionKey> selectedKeys, final Set<SelectionKey> allKeys) {
-        if (this.controller.getSessionTimeout() > 0 || this.controller.getSessionIdleTimeout() > 0) {
-            for (final SelectionKey key : allKeys) {
-                // 没有触发的key检测是否超时或者idle
-                if (!selectedKeys.contains(key)) {
-                    if (key.attachment() != null) {
-                        this.checkExpiredIdle(key, this.getSessionFromAttchment(key));
-                    }
-                }
-            }
-        }
-    }
+	final void postSelect(final Set<SelectionKey> selectedKeys, final Set<SelectionKey> allKeys) {
+		if (this.controller.getSessionTimeout() > 0 || this.controller.getSessionIdleTimeout() > 0) {
+			if (isNeedCheckSessionTimeout()) {
+				for (final SelectionKey key : allKeys) {
+					// 没有触发的key检测是否超时或者idle
+					if (!selectedKeys.contains(key)) {
+						if (key.attachment() != null) {
+							this.checkExpiredIdle(key, this.getSessionFromAttchment(key));
+						}
+					}
+				}
+                this.lastCheckSessionTimeoutTs = this.getTime();
+			}
+		}
+	}
 
 
     private long checkExpiredIdle(final SelectionKey key, final Session session) {
