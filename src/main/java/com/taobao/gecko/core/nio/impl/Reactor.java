@@ -681,7 +681,7 @@ public final class Reactor extends Thread {
 						}
 					}
 				}
-                this.lastCheckSessionTimeoutTs = this.getTime();
+				this.lastCheckSessionTimeoutTs = this.getTime();
 			}
 		}
 	}
