@@ -34,24 +34,24 @@
  */
 package com.taobao.gecko.core.buffer;
 
+import com.taobao.gecko.core.util.CircularQueue;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 
-import com.taobao.gecko.core.util.CircularQueue;
-
 
 /**
  * An {@link IoBufferAllocator} that caches the buffers which are likely to be
  * reused during auto-expansion of the buffers.
- * <p>
+ * <p/>
  * In {@link SimpleBufferAllocator}, the underlying {@link ByteBuffer} of the
  * {@link IoBuffer} is reallocated on its capacity change, which means the newly
  * allocated bigger {@link ByteBuffer} replaces the old small {@link ByteBuffer}
  * . Consequently, the old {@link ByteBuffer} is marked for garbage collection.
- * <p>
+ * <p/>
  * It's not a problem in most cases as long as the capacity change doesn't
  * happen frequently. However, once it happens too often, it burdens the VM and
  * the cost of filling the newly allocated {@link ByteBuffer} with {@code NUL}
@@ -66,11 +66,11 @@ import com.taobao.gecko.core.util.CircularQueue;
  * </ul>
  * Please note the observation above is subject to change in a different
  * environment.
- * <p>
+ * <p/>
  * {@link CachedBufferAllocator} uses {@link ThreadLocal} to store the cached
  * buffer, allocates buffers whose capacity is power of 2 only and provides
  * performance advantage if {@link IoBuffer#free()} is called properly.
- * 
+ *
  * @author The Apache MINA Project (dev@mina.apache.org)
  * @version $Rev: 671827 $, $Date: 2008-06-26 10:49:48 +0200 (Thu, 26 Jun 2008)
  *          $
@@ -80,7 +80,7 @@ public class CachedBufferAllocator implements IoBufferAllocator {
     private static final int DEFAULT_MAX_POOL_SIZE = 8;
     private static final int DEFAULT_MAX_CACHED_BUFFER_SIZE = 1 << 18; // 256KB
 
-    private final int maxPoolSize;
+    private final int maxPoolSize;//等于0表示不限制CircularQueue的长度
     private final int maxCachedBufferSize;
 
     private final ThreadLocal<Map<Integer, Queue<CachedBuffer>>> heapBuffers;
@@ -99,14 +99,12 @@ public class CachedBufferAllocator implements IoBufferAllocator {
 
     /**
      * Creates a new instance.
-     * 
-     * @param maxPoolSize
-     *            the maximum number of buffers with the same capacity per
-     *            thread. <tt>0</tt> disables this limitation.
-     * @param maxCachedBufferSize
-     *            the maximum capacity of a cached buffer. A buffer whose
-     *            capacity is bigger than this value is not pooled. <tt>0</tt>
-     *            disables this limitation.
+     *
+     * @param maxPoolSize         the maximum number of buffers with the same capacity per
+     *                            thread. <tt>0</tt> disables this limitation.
+     * @param maxCachedBufferSize the maximum capacity of a cached buffer. A buffer whose
+     *                            capacity is bigger than this value is not pooled. <tt>0</tt>
+     *                            disables this limitation.
      */
     public CachedBufferAllocator(final int maxPoolSize, final int maxCachedBufferSize) {
         if (maxPoolSize < 0) {
@@ -153,17 +151,16 @@ public class CachedBufferAllocator implements IoBufferAllocator {
     }
 
 
-    private Map<Integer, Queue<CachedBuffer>> newPoolMap() {
+    public Map<Integer, Queue<CachedBuffer>> newPoolMap() {
         final Map<Integer, Queue<CachedBuffer>> poolMap = new HashMap<Integer, Queue<CachedBuffer>>();
         final int poolSize = this.maxPoolSize == 0 ? DEFAULT_MAX_POOL_SIZE : this.maxPoolSize;
-        for (int i = 0; i < 31; i++) {
-            poolMap.put(1 << i, new CircularQueue<CachedBuffer>(poolSize));
-        }
+        int maxCachedBufferSize = IoBuffer.normalizeCapacity(this.getMaxCachedBufferSize());
         poolMap.put(0, new CircularQueue<CachedBuffer>(poolSize));
-        poolMap.put(Integer.MAX_VALUE, new CircularQueue<CachedBuffer>(poolSize));
+        for (int cachedBufferSize = maxCachedBufferSize; cachedBufferSize > 0; cachedBufferSize = cachedBufferSize >> 1) {
+            poolMap.put(cachedBufferSize, new CircularQueue<CachedBuffer>(poolSize));
+        }
         return poolMap;
     }
-
 
     public IoBuffer allocate(final int requestedCapacity, final boolean direct) {
         final int actualCapacity = IoBuffer.normalizeCapacity(requestedCapacity);
@@ -171,17 +168,14 @@ public class CachedBufferAllocator implements IoBufferAllocator {
         if (this.maxCachedBufferSize != 0 && actualCapacity > this.maxCachedBufferSize) {
             if (direct) {
                 buf = this.wrap(ByteBuffer.allocateDirect(actualCapacity));
-            }
-            else {
+            } else {
                 buf = this.wrap(ByteBuffer.allocate(actualCapacity));
             }
-        }
-        else {
+        } else {
             Queue<CachedBuffer> pool;
             if (direct) {
                 pool = this.directBuffers.get().get(actualCapacity);
-            }
-            else {
+            } else {
                 pool = this.heapBuffers.get().get(actualCapacity);
             }
 
@@ -191,12 +185,10 @@ public class CachedBufferAllocator implements IoBufferAllocator {
                 buf.clear();
                 buf.setAutoExpand(false);
                 buf.order(ByteOrder.BIG_ENDIAN);
-            }
-            else {
+            } else {
                 if (direct) {
                     buf = this.wrap(ByteBuffer.allocateDirect(actualCapacity));
-                }
-                else {
+                } else {
                     buf = this.wrap(ByteBuffer.allocate(actualCapacity));
                 }
             }
@@ -310,8 +302,7 @@ public class CachedBufferAllocator implements IoBufferAllocator {
             Queue<CachedBuffer> pool;
             if (oldBuf.isDirect()) {
                 pool = CachedBufferAllocator.this.directBuffers.get().get(oldBuf.capacity());
-            }
-            else {
+            } else {
                 pool = CachedBufferAllocator.this.heapBuffers.get().get(oldBuf.capacity());
             }
 
